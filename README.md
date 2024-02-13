@@ -1,11 +1,3 @@
-# profolio
-weemp womope isgpoh '
-a
-g
-tf
-dagtgfd
-gfd
-agdarfgrajhgyra 
- gpra\r] gg
- arga 'rhapghra
-A new Flutter project.
+# Profolio
+
+Locked in since 2/12/2024
