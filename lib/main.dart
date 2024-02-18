@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -75,13 +76,16 @@ class _MainAppState extends State<MainApp> {
                 alignment: Alignment.topCenter,
                 children: [
                   const SizedBox(height: 180,),
-                  Container(
-                  height: 120,
-                  decoration: 
-                    BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(avatarImage), fit: BoxFit.fill
-                      )
+                  GestureDetector(
+                    onTap: () {pictureSelect("Change Background");},
+                    child: Container(
+                    height: 120,
+                    decoration: 
+                      BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(avatarImage), fit: BoxFit.fill
+                        )
+                      ),
                     ),
                   ),
 
@@ -89,7 +93,7 @@ class _MainAppState extends State<MainApp> {
                     top: 50,
                     child: GestureDetector(
                       onTap: () {pictureSelect("Change Avatar");
-                      print('circleAvatar tapped');},
+                      },
                       child: CircleAvatar(
                         backgroundImage: AssetImage(avatarImage),
                         radius: 50,
