@@ -75,7 +75,7 @@ class _MainAppState extends State<MainApp> {
               Stack(
                 alignment: Alignment.topCenter,
                 children: [
-                  const SizedBox(height: 180,),
+                  const SizedBox(height: 160,),
                   GestureDetector(
                     onTap: () {pictureSelect("Change Background");},
                     child: Container(
@@ -106,7 +106,21 @@ class _MainAppState extends State<MainApp> {
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Name')
+                  Text(
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold
+                    ),
+                    'Name'
+                    )
+                ],
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('age'),
+                  SizedBox(width: 20,),
+                  Text('Grade')
                 ],
               )
             ],
