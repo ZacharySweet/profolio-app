@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -6,8 +8,49 @@ void main() {
   ));
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
+
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
+  
+
+  String avatarImage = 'assets/van-orang.jpg';
+
+  void pictureSelect(String titleText) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(titleText),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.photo),
+                title: const Text("Choose from Gallery"),
+                onTap: () {
+                  // Implement functionality to choose image from gallery
+                  Navigator.pop(context); // Close the dialog
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.camera),
+                title: const Text("Take a Photo"),
+                onTap: () {
+                  // Implement functionality to take a photo
+                  Navigator.pop(context); // Close the dialog
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +70,59 @@ class MainApp extends StatelessWidget {
             centerTitle: true,
             backgroundColor: Colors.blue[800],
           ),
-          body: Row(
+          body: Column(
             children: [
-              Expanded(
-                  child: Container(
-                color: Colors.black,
-                child: const Text(
-                  'Welcome Ben!',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-              ))
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  const SizedBox(height: 160,),
+                  GestureDetector(
+                    onTap: () {pictureSelect("Change Background");},
+                    child: Container(
+                    height: 120,
+                    decoration: 
+                      BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(avatarImage), fit: BoxFit.fill
+                        )
+                      ),
+                    ),
+                  ),
+
+                  Positioned(
+                    top: 50,
+                    child: GestureDetector(
+                      onTap: () {pictureSelect("Change Avatar");
+                      },
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage(avatarImage),
+                        radius: 50,
+                        ),
+                    )
+                    )
+                ],
+                
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold
+                    ),
+                    'Name'
+                    )
+                ],
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('age'),
+                  SizedBox(width: 20,),
+                  Text('Grade')
+                ],
+              )
             ],
           )),
     );
