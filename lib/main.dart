@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const MaterialApp(
+    home: MainApp(),
+  ));
 }
 
 class MainApp extends StatelessWidget {
@@ -9,12 +11,34 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text('Yo mama'),
-        ),
-      ),
+          backgroundColor: Colors.blue[900],
+          appBar: AppBar(
+            toolbarHeight: 30,
+            title: const Text(
+              "Profolio",
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 5,
+                  color: Colors.white),
+            ),
+            centerTitle: true,
+            backgroundColor: Colors.blue[800],
+          ),
+          body: Row(
+            children: [
+              Expanded(
+                  child: Container(
+                color: Colors.black,
+                child: const Text(
+                  'Welcome Ben!',
+                  style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+              ))
+            ],
+          )),
     );
   }
 }
