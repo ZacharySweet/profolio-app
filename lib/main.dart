@@ -27,16 +27,36 @@ class MainApp extends StatelessWidget {
             centerTitle: true,
             backgroundColor: Colors.blue[800],
           ),
-          body: Row(
+          body: Column(
             children: [
-              Expanded(
-                  child: Container(
-                color: Colors.black,
-                child: const Text(
-                  'Welcome Ben!',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-              ))
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  const Expanded(
+                    child: SizedBox(height: 180,)),
+                  Expanded(
+                    child: Container(
+                      height: 120,
+                      color: Colors.black,
+                    )
+                  ),
+
+                  const Positioned(
+                    top: 50,
+                    child: CircleAvatar(
+                      backgroundColor: Colors.amber,
+                      radius: 50,
+                      )
+                    )
+                ],
+                
+              ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Name')
+                ],
+              )
             ],
           )),
     );
