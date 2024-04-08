@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profolio/routes/test_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,60 +11,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    // Makes the main page
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-          body: Column(
-            children: [
-              Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  const SizedBox(
-                    height: 160,
-                  ),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 120,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage("assets/temp.jpg"),
-                              fit: BoxFit.fill)),
-                    ),
-                  ),
-                  Positioned(
-                      top: 50,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: const CircleAvatar(
-                          backgroundImage: AssetImage("assets/temp.jpg"),
-                          radius: 50,
-                        ),
-                      ))
-                ],
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                      'Name')
-                ],
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('age'),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text('Grade')
-                ],
-              )
-            ],
-          )),
-    );
+        home: Scaffold(
+      // Creates the appbar
+      appBar: AppBar(
+        centerTitle: true,
+        shadowColor: const Color.fromARGB(0, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(0, 255, 255, 255),
+        leading: const CircleAvatar(
+            backgroundImage: AssetImage('lib/assets/images/van-orang.jpg')),
+        title: const Text(
+          "HOME",
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+      // Creates the main action button used for editing actions in the app
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const TestPage()));
+        },
+        child: const Icon(Icons.add),
+      ),
+    ));
   }
 }
