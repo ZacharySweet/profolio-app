@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/routes/test_page.dart';
+import 'package:profolio/widgets/circle_tab_indicator.dart';
+
+TextStyle tabTextStyle =
+    const TextStyle(fontWeight: FontWeight.w300, fontFamily: "WorkSans");
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,25 +32,21 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.black, fontSize: 26, fontFamily: 'Fun'))
               ],
             )),
-        body: const Column(
-          children: [
-            // Making the navigation bar
-            DefaultTextStyle(
-                style: TextStyle(color: Colors.black, fontFamily: 'WorkSans'),
-                child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 35.0, vertical: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Basic"),
-                        Text("Academics"),
-                        Text("Sports"),
-                        Text("Clubs")
-                      ],
-                    )))
-          ],
-        ),
+        body: DefaultTabController(
+            length: 4,
+            child: TabBar(
+              labelStyle: tabTextStyle,
+              unselectedLabelStyle: tabTextStyle,
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.black,
+              indicator: CircleTabIndicator(color: Colors.black, radius: 2.5),
+              tabs: const <Widget>[
+                Tab(text: "Basic"),
+                Tab(text: "Grades"),
+                Tab(text: "Clubs"),
+                Tab(text: "Sports")
+              ],
+            )),
         // Creates the main action button used for editing actions in the app
         floatingActionButton: FloatingActionButton(
           onPressed: () {
