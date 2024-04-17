@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profolio/routes/add_activity.dart';
 import 'package:profolio/routes/test_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,7 +25,7 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const TestPage()));
+              MaterialPageRoute(builder: (context) => const MyWidget()));
         },
         child: const Icon(Icons.add),
       ),
