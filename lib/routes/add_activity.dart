@@ -69,6 +69,15 @@ class MyWidget extends StatelessWidget {
                 )
               ]
             ),
+            SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {},
+                child: const Text('Submit'),
+                style: ElevatedButton.styleFrom(
+                 backgroundColor: Colors.red,
+                 minimumSize: const Size(100, 40), // Set minimum size
+              ),
+              )
         
           ],
         ),
