@@ -20,3 +20,10 @@ flutter:
   assets:
     - lib/assets/images/temp.jpg
     - lib/assets/images/van-orang.jpg
+  fonts:
+    - family: WorkSans
+      fonts:
+        - asset: lib/assets/fonts/worksans.ttf
+    - family: Fun
+      fonts:
+        - asset: lib/assets/fonts/fun.ttf
