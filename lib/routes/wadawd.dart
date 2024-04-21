@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/widgets/circle_tab_indicator.dart';
+import 'package:profolio/widgets/basic_Page.dart';
+import 'package:profolio/widgets/plus_Button.dart';
+import 'add_activity.dart';
+import 'package:profolio/widgets/sports_clubs_grades_page.dart';
 
 TextStyle tabTextStyle =
     const TextStyle(fontWeight: FontWeight.w300, fontFamily: "WorkSans");
@@ -12,8 +16,23 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final List<Activity> activities = [];
+  void addActivity(String title, String description) {
+    setState(() {
+      activities.add(Activity(title: title, description: description));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    void navigateToAddActivity() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => AddActivity(onAddActivity: addActivity)),
+      );
+    }
+
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -45,16 +64,19 @@ class _MainPageState extends State<MainPage> {
             ],
           ),
         ),
-        body: const TabBarView(
-          children: [
-            Center(
-                child:
-                    Text('Tab 1 Placeholder')), // Basic information placeholder
-            Center(child: Text('Tab 2 Placeholder')), //
-            Center(child: Text('Tab 3 Placeholder')),
-            Center(child: Text('Tab 4 Placeholder')),
-          ],
-        ),
+        body: Stack(children: [
+          TabBarView(
+            children: [
+              const BasicPage(title: 'Basic'), // Basic information placeholder
+              const Center(child: Text('Tab 2 Placeholder')), //
+              ClubPage(activities: activities),
+              const Center(child: Text('Tab 4 Placeholder')),
+            ],
+          ),
+          FloatingPlusButton(
+            onPressed: navigateToAddActivity,
+          ),
+        ]),
       ),
     );
   }
