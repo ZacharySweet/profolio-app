@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/widgets/general_widgets/divider_and_text.dart';
 import 'package:profolio/widgets/general_widgets/infographic_widget.dart';
+import 'package:profolio/widgets/general_widgets/list_widget.dart';
 
 class ClubPage extends StatefulWidget {
   const ClubPage({super.key});
@@ -28,7 +29,8 @@ class _ClubPageState extends State<ClubPage> {
                 ),
               ),
               // List of all the clubs the user is in
-              DividerAndText(dividerText: "Your Clubs")
+              DividerAndText(dividerText: "Your Clubs"),
+              ListWidget()
             ],
           ),
         ));
