@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/routes/wadawd.dart';
+import 'package:profolio/routes/main_page.dart';
 
 void main() {
-  runApp(const MaterialApp(
-      // Add themes and stuff here
-      home: MainPage()));
+  runApp(const MaterialApp(home: MainPage()));
 }
