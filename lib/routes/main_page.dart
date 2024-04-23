@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/circle_tab_indicator.dart';
 import 'package:profolio/widgets/basic_page.dart';
 import 'package:profolio/widgets/home_screen_pages/clubs.dart';
 
@@ -27,15 +26,14 @@ class _MainPageState extends State<MainPage> {
                       color: Colors.black, fontSize: 26, fontFamily: 'Fun'))
             ],
           ),
-          bottom: TabBar(
-            labelStyle: const TextStyle(
-                fontWeight: FontWeight.w300, fontFamily: "WorkSans"),
-            unselectedLabelStyle: const TextStyle(
-                fontWeight: FontWeight.w300, fontFamily: "WorkSans"),
+          bottom: const TabBar(
+            labelStyle:
+                TextStyle(fontWeight: FontWeight.w300, fontFamily: "WorkSans"),
+            unselectedLabelStyle:
+                TextStyle(fontWeight: FontWeight.w300, fontFamily: "WorkSans"),
             labelColor: Colors.black,
             unselectedLabelColor: Colors.black,
-            indicator: CircleTabIndicator(color: Colors.black, radius: 2.2),
-            tabs: const <Widget>[
+            tabs: <Widget>[
               Tab(
                 text: "Basic",
               ),
