@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/basic_page.dart';
+import 'package:profolio/widgets/home_screen_pages/basic_page.dart';
 import 'package:profolio/widgets/home_screen_pages/clubs.dart';
 
 class MainPage extends StatefulWidget {
@@ -46,7 +46,7 @@ class _MainPageState extends State<MainPage> {
         body: const Stack(children: [
           TabBarView(
             children: [
-              BasicPage(title: 'Basic'), // Basic information placeholder
+              BasicPage(), // Basic information placeholder
               Center(child: Text('Tab 2 Placeholder')), //
               ClubPage(),
               Center(child: Text('Tab 4 Placeholder')),
