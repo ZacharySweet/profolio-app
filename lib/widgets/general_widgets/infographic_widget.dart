@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profolio/routes/add_activity.dart';
 
 class InfographicWidget extends StatelessWidget {
   final String buttonText;
@@ -40,7 +41,13 @@ class InfographicWidget extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight, // Align to the right
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AddActivity()),
+                        );
+                      },
                       child: Text(buttonText),
                     ),
                   ),

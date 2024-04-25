@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/widgets/home_screen_pages/basic_page.dart';
 import 'package:profolio/widgets/home_screen_pages/clubs.dart';
-import 'package:profolio/routes/add_activity.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -54,14 +53,6 @@ class _MainPageState extends State<MainPage> {
               ],
             ),
           ]),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AddActivity()),
-              );
-            },
-          ),
         ));
   }
 }
