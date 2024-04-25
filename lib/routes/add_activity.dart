@@ -12,13 +12,11 @@ class Activity {
   final String title;
   final String description;
 
-  Activity({required this.title, required this.description});
+  const Activity({required this.title, required this.description});
 }
 
 class AddActivity extends StatefulWidget {
-  final Function(String title, String description) onAddActivity;
-
-  const AddActivity({super.key, required this.onAddActivity});
+  const AddActivity({super.key}); // Removed onAddActivity parameter
 
   @override
   State<AddActivity> createState() => _AddActivityState();
@@ -56,9 +54,8 @@ class _AddActivityState extends State<AddActivity> {
       return;
     }
 
-    widget.onAddActivity(
-        title, description); // Call addActivity function passed from ClubPage
-    Navigator.pop(context); // Close AddActivity page
+    // Navigate back to ClubPage and potentially pass the new activity (implementation depends on your navigation setup)
+    Navigator.pop(context, Activity(title: title, description: description));
   }
 
   @override
