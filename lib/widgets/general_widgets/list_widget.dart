@@ -25,8 +25,8 @@ class ListWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            FlutterLogo(size: 40),
-            SizedBox(width: 10),
+            const FlutterLogo(size: 40),
+            const SizedBox(width: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

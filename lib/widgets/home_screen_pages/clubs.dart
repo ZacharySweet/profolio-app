@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/general_widgets/divider_and_text.dart';
-import 'package:profolio/widgets/general_widgets/infographic_widget.dart';
 import 'package:profolio/widgets/general_widgets/list_widget.dart';
 import 'package:profolio/routes/add_activity.dart'; // Assuming AddActivity widget is in a separate file
 
@@ -24,7 +22,7 @@ class _ClubPageState extends State<ClubPage> {
   void navigateToAddActivity() async {
     final newActivity = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AddActivity()),
+      MaterialPageRoute(builder: (context) => const AddActivity()),
     );
     if (newActivity != null) {
       setState(() {
@@ -36,7 +34,6 @@ class _ClubPageState extends State<ClubPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -62,7 +59,6 @@ class _ClubPageState extends State<ClubPage> {
 
   Widget _buildActivityItem(Activity activity) {
     return ListWidget(title: activity.title, description: activity.description);
-
   }
 }
 

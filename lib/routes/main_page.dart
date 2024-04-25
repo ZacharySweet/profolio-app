@@ -58,7 +58,7 @@ class _MainPageState extends State<MainPage> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AddActivity()),
+                MaterialPageRoute(builder: (context) => const AddActivity()),
               );
             },
           ),
