@@ -36,6 +36,7 @@ class _ClubPageState extends State<ClubPage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
@@ -61,6 +62,7 @@ class _ClubPageState extends State<ClubPage> {
 
   Widget _buildActivityItem(Activity activity) {
     return ListWidget(title: activity.title, description: activity.description);
+
   }
 }
 
