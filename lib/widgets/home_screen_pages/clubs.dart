@@ -15,12 +15,12 @@ class _ClubPageState extends State<ClubPage> {
   Widget build(BuildContext context) {
     return Container(
         color: const Color.fromARGB(255, 246, 246, 246),
-        child: const Padding(
-          padding: EdgeInsets.all(10),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: [
               // Infographic at the top
-              Padding(
+              const Padding(
                 padding: EdgeInsets.fromLTRB(2, 4, 2, 16),
                 child: InfographicWidget(
                   buttonText: "Add Club",
@@ -29,8 +29,22 @@ class _ClubPageState extends State<ClubPage> {
                 ),
               ),
               // List of all the clubs the user is in
-              DividerAndText(dividerText: "Your Clubs"),
-              ListWidget()
+              const DividerAndText(dividerText: "Your Clubs"),
+              Expanded(
+                child: ListView(
+                  children: const [
+                    ListWidget(),
+                    ListWidget(),
+                    ListWidget(),
+                    ListWidget(),
+                    ListWidget(),
+                    ListWidget(),
+                    ListWidget(),
+                    ListWidget(),
+                    ListWidget()
+                  ],
+                ),
+              )
             ],
           ),
         ));
