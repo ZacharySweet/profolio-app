@@ -119,26 +119,9 @@ class _AddActivityState extends State<AddActivity> {
                     onChanged: onDropdownChange,
                   ),
                   const SizedBox(width: 30),
-                  Visibility(
-                    visible: showHoursField,
-                    child: Container(
-                      width: 50,
-                      child: const TextField(
-                        decoration: InputDecoration(hintText: 'Hours:'),
-                      ),
-                    ),
-                  ),
                 ],
               ),
               const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: submitActivity,
-                child: const Text('Submit'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  minimumSize: const Size(100, 40),
-                ),
-              )
             ],
           ),
         ),
