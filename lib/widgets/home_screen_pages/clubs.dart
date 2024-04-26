@@ -48,7 +48,7 @@ class _ClubPageState extends State<ClubPage> {
                             child: Column(
                               children: [
                                 const Text(
-                                  "descriptionText",
+                                  "Clubs are a crucial part of your high school resume. Being a high ranking member of various clubs can greately increase your odds of being accepted into your dream college.",
                                   overflow: TextOverflow.fade,
                                   maxLines: null,
                                   softWrap: true,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AddSport extends StatelessWidget {
-  const AddSport(result, {super.key});
+  const AddSport({super.key});
 
   // Function to handle adding the sport
   void addSport(BuildContext context) {
