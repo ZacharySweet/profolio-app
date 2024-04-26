@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/home_screen_pages/basic_page.dart';
+import 'package:profolio/widgets/home_screen_pages/basic.dart';
 import 'package:profolio/widgets/home_screen_pages/clubs.dart';
+import 'package:profolio/widgets/home_screen_pages/grades.dart';
+import 'package:profolio/widgets/home_screen_pages/sports.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -9,6 +11,12 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  final List<Widget> pages = [
+    const BasicPage(),
+    const GradesPage(),
+    const ClubPage(),
+    const SportPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -34,23 +42,16 @@ class _MainPageState extends State<MainPage> {
               labelColor: Colors.black,
               unselectedLabelColor: Colors.black,
               tabs: <Widget>[
-                Tab(
-                  text: "Basic",
-                ),
-                Tab(text: "Grades"),
+                Tab(text: "Basic"),
+                Tab(text: "Classes"),
                 Tab(text: "Clubs"),
                 Tab(text: "Sports")
               ],
             ),
           ),
-          body: const Stack(children: [
+          body: Stack(children: [
             TabBarView(
-              children: [
-                BasicPage(), // Basic information placeholder
-                Center(child: Text('Tab 2 Placeholder')), //
-                ClubPage(),
-                Center(child: Text('Tab 4 Placeholder')),
-              ],
+              children: pages,
             ),
           ]),
         ));

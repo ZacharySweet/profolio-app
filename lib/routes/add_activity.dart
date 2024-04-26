@@ -3,10 +3,34 @@ import 'package:flutter/material.dart';
 class AddActivity extends StatelessWidget {
   const AddActivity({super.key});
 
+  // Function to handle adding the activity
+  void addActivity(BuildContext context) {
+    // You can replace this with your logic to retrieve the text field values
+    String activityTitle = "FBLA";
+    String activityDescription = "president";
+
+    // Here you can perform any further logic, such as validating the input
+
+    // Now, you can navigate back to the previous screen and pass the activity details
+    Navigator.pop(context, [activityTitle, activityDescription]);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Add Activity")),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
+        title: const Text("Add Activity"),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(Icons.close),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),
         child: Column(
@@ -45,10 +69,12 @@ class AddActivity extends StatelessWidget {
               // Function to update selected value
             ),
             ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Submit"))
+              onPressed: () {
+                // Call the function to add the activity when the button is pressed
+                addActivity(context);
+              },
+              child: const Text("Submit"),
+            )
           ],
         ),
       ),

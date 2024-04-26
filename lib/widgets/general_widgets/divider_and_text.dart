@@ -8,7 +8,7 @@ class DividerAndText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+      padding: const EdgeInsets.fromLTRB(0, 12, 0, 6),
       child: Row(
         children: [
           Text(
@@ -17,12 +17,9 @@ class DividerAndText extends StatelessWidget {
           ),
           const SizedBox(width: 6),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
-              child: Container(
-                color: const Color.fromARGB(106, 0, 0, 0),
-                height: 1,
-              ),
+            child: Container(
+              color: const Color.fromARGB(106, 0, 0, 0),
+              height: 1,
             ),
           ),
         ],
