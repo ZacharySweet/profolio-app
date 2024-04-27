@@ -11,7 +11,6 @@ class _AddSportState extends State<AddSport> {
   final _titleController = TextEditingController(); // Controller for Sport Title
   final _descriptionController = TextEditingController(); // Controller for Description
 
-  String? _selectedCategory; // Variable to store selected dropdown value
 
   @override
   void dispose() {
@@ -68,37 +67,6 @@ class _AddSportState extends State<AddSport> {
               decoration: const InputDecoration(hintText: "Description"),
             ),
             const SizedBox(height: 10),
-            DropdownButton<String>(
-              value: _selectedCategory, // Set initial selected value
-              items: const [
-                DropdownMenuItem(
-                  value: 'Business',
-                  child: Text('Business'),
-                ),
-                DropdownMenuItem(
-                  value: 'Academic',
-                  child: Text('Academic'),
-                ),
-                DropdownMenuItem(
-                  value: 'Tech',
-                  child: Text('Tech'),
-                ),
-                DropdownMenuItem(
-                  value: 'Other',
-                  child: Text('Other'),
-                ),
-              ],
-              onChanged: (String? value) {
-                setState(() {
-                  _selectedCategory = value;
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: submitSport,
-              child: const Text("Submit"),
-            ),
           ],
         ),
       ),
