@@ -36,7 +36,9 @@ class _MainPageState extends State<MainPage> {
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
               child: Row(
                 children: [
-                  Column(children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                     const Text(
                       "Zachary Sweet",
                       style: TextStyle(fontSize: 24),
