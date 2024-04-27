@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/general_widgets/divider_and_text.dart';
-import 'package:profolio/widgets/general_widgets/home_card.dart';
+import 'package:profolio/widgets/home_screen_pages/basic.dart';
+import 'package:profolio/widgets/home_screen_pages/clubs.dart';
+import 'package:profolio/widgets/home_screen_pages/classes.dart';
+import 'package:profolio/widgets/home_screen_pages/sports.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

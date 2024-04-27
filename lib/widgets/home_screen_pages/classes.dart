@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/providers/club_data_and_provider.dart'; // Import ClubListProvider
-import 'package:profolio/routes/add_club.dart'; // Import AddClub route
+import 'package:profolio/widgets/providers/class_data_and_provider.dart'; // Import ClassListProvider
+import 'package:profolio/routes/add_class.dart'; // Import AddClass route
 import 'package:profolio/widgets/general_widgets/divider_and_text.dart';
 import 'package:profolio/widgets/general_widgets/list_widget.dart';
 import 'package:provider/provider.dart'; // Import Provider
 
-class ClubPage extends StatefulWidget {
-  const ClubPage({super.key});
+class ClassPage extends StatefulWidget {
+  const ClassPage({super.key});
 
   @override
-  State<ClubPage> createState() => _ClubPageState();
+  State<ClassPage> createState() => _ClassPageState();
 }
 
-class _ClubPageState extends State<ClubPage> {
-  // No need for a separate clubs list variable
+class _ClassPageState extends State<ClassPage> {
+  // No need for a separate classes list variable
 
-void addClub(String clubTitle, String clubDescription) async {
+void addClass(String classTitle, String classDescription) async {
   //  await Navigator.push(
  // context,
-  //MaterialPageRoute(builder: (context) => const AddClub()),
+  //MaterialPageRoute(builder: (context) => const AddClass()),
   //);
 
-  Provider.of<ClubListProvider>(context, listen: false)
-    .addClub(clubTitle, clubDescription);
+  Provider.of<ClassListProvider>(context, listen: false)
+    .addClass(classTitle, classDescription);
   }
 
   @override
   Widget build(BuildContext context) {
-    final clubListProvider = Provider.of<ClubListProvider>(context); // Access provider
+    final classListProvider = Provider.of<ClassListProvider>(context); // Access provider
 
     return Container(
       color: const Color.fromARGB(255, 246, 246, 246),
@@ -53,7 +53,7 @@ void addClub(String clubTitle, String clubDescription) async {
                         child: Column(
                           children: [
                             const Text(
-                              "Clubs are a crucial part of your high school resume. Being a high ranking member of various clubs can greatly increase your odds of being accepted into your dream college.",
+                              "Classes are a crucial part of your high school resume. Being a high ranking member of various classes can greatly increase your odds of being accepted into your dream college.",
                               overflow: TextOverflow.fade,
                               maxLines: null,
                               softWrap: true,
@@ -69,26 +69,26 @@ void addClub(String clubTitle, String clubDescription) async {
                               alignment: Alignment.centerRight,
                               child: ElevatedButton(
                                 onPressed: () async {
-  // Access ClubListProvider instance
-                                  final clubListProvider = Provider.of<ClubListProvider>(context, listen: false);
+  // Access ClassListProvider instance
+                                  final classListProvider = Provider.of<ClassListProvider>(context, listen: false);
 
-  // Navigate to AddClub and potentially receive data
+  // Navigate to AddClass and potentially receive data
                                   final result = await Navigator.push(
                                   context,
-                                 MaterialPageRoute(builder: (context) => const AddClub()),
+                                 MaterialPageRoute(builder: (context) => const AddClass()),
                                  );
 
   // Check if data is returned (optional)
                                 if (result != null) {
-                                final clubTitle = result[0];
-                                final clubDescription = result[1];
+                                final classTitle = result[0];
+                                final classDescription = result[1];
 
-    // Use the stored provider instance to add the club
-                                clubListProvider.addClub(clubTitle, clubDescription);
+    // Use the stored provider instance to add the class
+                                classListProvider.addClass(classTitle, classDescription);
                                 }
                               },
 
-                                child: const Text("Add Club"),
+                                child: const Text("Add Class"),
                               ),
                             ),
                           ],
@@ -99,12 +99,12 @@ void addClub(String clubTitle, String clubDescription) async {
                 ),
               ),
             ),
-            // List of clubs section
-            const DividerAndText(dividerText: "Your Clubs"),
+            // List of classes section
+            const DividerAndText(dividerText: "Your Classes"),
             Expanded(
               child: ListView(
-                children: clubListProvider.clubs // Access clubs list from provider
-                    .map((club) => ListWidget(title: club.clubTitle, description: club.clubDescription))
+                children: classListProvider.classes // Access classes list from provider
+                    .map((clas) => ListWidget(title: clas.classTitle, description: clas.classDescription))
                     .toList(),
               ),
             

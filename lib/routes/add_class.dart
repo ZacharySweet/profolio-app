@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AddSport extends StatefulWidget {
-  const AddSport({super.key});
+class AddClass extends StatefulWidget {
+  const AddClass({super.key});
 
   @override
-  State<AddSport> createState() => _AddSportState();
+  State<AddClass> createState() => _AddClassState();
 }
 
-class _AddSportState extends State<AddSport> {
-  final _titleController = TextEditingController(); // Controller for Sport Title
+class _AddClassState extends State<AddClass> {
+  final _titleController = TextEditingController(); // Controller for Class Title
   final _descriptionController = TextEditingController(); // Controller for Description
 
   String? _selectedCategory; // Variable to store selected dropdown value
@@ -20,24 +20,24 @@ class _AddSportState extends State<AddSport> {
     super.dispose();
   }
 
-  void submitSport() {
-  addSport(context); // Access BuildContext from the surrounding scope
+  void submitClass() {
+  addClass(context); // Access BuildContext from the surrounding scope
 }
 
 
 
-  void addSport(BuildContext context) {
-    final clubTitle = _titleController.text;
-    final clubDescription = _descriptionController.text;
+  void addClass(BuildContext context) {
+    final classTitle = _titleController.text;
+    final classDescription = _descriptionController.text;
 
     // Validate user input (optional)
-    if (clubTitle.isEmpty || clubDescription.isEmpty) {
+    if (classTitle.isEmpty || classDescription.isEmpty) {
       // Show error message or prevent submission
       return;
     }
 
     // Navigate back with user-entered data
-    Navigator.pop(context, [clubTitle, clubDescription]);
+    Navigator.pop(context, [classTitle, classDescription]);
   }
 
   @override
@@ -46,7 +46,7 @@ class _AddSportState extends State<AddSport> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const Text("Add Sport"),
+        title: const Text("Add Class"),
         actions: [
           GestureDetector(
             onTap: () => Navigator.pop(context),
@@ -96,7 +96,7 @@ class _AddSportState extends State<AddSport> {
             ),
             const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: submitSport,
+              onPressed: submitClass,
               child: const Text("Submit"),
             ),
           ],

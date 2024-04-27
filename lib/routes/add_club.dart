@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AddActivity extends StatefulWidget {
-  const AddActivity({super.key});
+class AddClub extends StatefulWidget {
+  const AddClub({super.key});
 
   @override
-  State<AddActivity> createState() => _AddActivityState();
+  State<AddClub> createState() => _AddClubState();
 }
 
-class _AddActivityState extends State<AddActivity> {
-  final _titleController = TextEditingController(); // Controller for Activity Title
+class _AddClubState extends State<AddClub> {
+  final _titleController = TextEditingController(); // Controller for Club Title
   final _descriptionController = TextEditingController(); // Controller for Description
 
   String? _selectedCategory; // Variable to store selected dropdown value
@@ -20,13 +20,13 @@ class _AddActivityState extends State<AddActivity> {
     super.dispose();
   }
 
-  void submitActivity() {
-  addActivity(context); // Access BuildContext from the surrounding scope
+  void submitClub() {
+  addClub(context); // Access BuildContext from the surrounding scope
 }
 
 
 
-  void addActivity(BuildContext context) {
+  void addClub(BuildContext context) {
     final clubTitle = _titleController.text;
     final clubDescription = _descriptionController.text;
 
@@ -46,7 +46,7 @@ class _AddActivityState extends State<AddActivity> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const Text("Add Activity"),
+        title: const Text("Add Club"),
         actions: [
           GestureDetector(
             onTap: () => Navigator.pop(context),
@@ -96,7 +96,7 @@ class _AddActivityState extends State<AddActivity> {
             ),
             const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: submitActivity,
+              onPressed: submitClub,
               child: const Text("Submit"),
             ),
           ],
