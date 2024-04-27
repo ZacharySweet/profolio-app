@@ -9,9 +9,9 @@ class AddService extends StatefulWidget {
 
 class _AddServiceState extends State<AddService> {
   final _titleController = TextEditingController(); // Controller for Service Title
-  final _descriptionController = TextEditingController(); // Controller for Description
+  final _descriptionController = TextEditingController();
+  final _hoursController = TextEditingController(); // Controller for Description
 
-  String? _selectedCategory; // Variable to store selected dropdown value
 
   @override
   void dispose() {
@@ -29,6 +29,7 @@ class _AddServiceState extends State<AddService> {
   void addService(BuildContext context) {
     final serviceTitle = _titleController.text;
     final serviceDescription = _descriptionController.text;
+    final serviceHours = _hoursController.text;
 
     // Validate user input (optional)
     if (serviceTitle.isEmpty || serviceDescription.isEmpty) {
@@ -37,7 +38,7 @@ class _AddServiceState extends State<AddService> {
     }
 
     // Navigate back with user-entered data
-    Navigator.pop(context, [serviceTitle, serviceDescription]);
+    Navigator.pop(context, [serviceTitle, serviceDescription, serviceHours]);
   }
 
   @override
@@ -68,32 +69,9 @@ class _AddServiceState extends State<AddService> {
               decoration: const InputDecoration(hintText: "Description"),
             ),
             const SizedBox(height: 10),
-            DropdownButton<String>(
-              value: _selectedCategory, // Set initial selected value
-              items: const [
-                DropdownMenuItem(
-                  value: 'Business',
-                  child: Text('Business'),
-                ),
-                DropdownMenuItem(
-                  value: 'Academic',
-                  child: Text('Academic'),
-                ),
-                DropdownMenuItem(
-                  value: 'Tech',
-                  child: Text('Tech'),
-                ),
-                DropdownMenuItem(
-                  value: 'Other',
-                  child: Text('Other'),
-                ),
-              ],
-              onChanged: (String? value) {
-                setState(() {
-                  _selectedCategory = value;
-                });
-              },
-            ),
+            TextField(
+              controller: _hoursController,
+              decoration: const InputDecoration(hintText: 'For ? hours'),),
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: submitService,
