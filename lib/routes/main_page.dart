@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/widgets/home_screen_pages/basic.dart';
 import 'package:profolio/widgets/home_screen_pages/clubs.dart';
-import 'package:profolio/widgets/home_screen_pages/grades.dart';
+import 'package:profolio/widgets/home_screen_pages/classes.dart';
 import 'package:profolio/widgets/home_screen_pages/sports.dart';
 
 class MainPage extends StatefulWidget {
@@ -13,7 +13,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final List<Widget> pages = [
     const BasicPage(),
-    const GradesPage(),
+    const ClassPage(),
     const ClubPage(),
     const SportPage(),
   ];

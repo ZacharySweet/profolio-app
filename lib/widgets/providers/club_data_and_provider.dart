@@ -16,5 +16,3 @@ class ClubListProvider extends ChangeNotifier {
     notifyListeners(); // Notify listeners about the change
   }
 }
-
-
