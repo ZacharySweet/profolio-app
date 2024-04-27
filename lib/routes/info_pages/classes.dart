@@ -13,13 +13,8 @@ class ClassPage extends StatefulWidget {
 }
 
 class _ClassPageState extends State<ClassPage> {
-  // No need for a separate classes list variable
 
   void addClass(String classTitle, String classDescription) async {
-    //  await Navigator.push(
-    // context,
-    //MaterialPageRoute(builder: (context) => const AddClass()),
-    //);
 
     Provider.of<ClassListProvider>(context, listen: false)
         .addClass(classTitle, classDescription);
@@ -102,7 +97,7 @@ class _ClassPageState extends State<ClassPage> {
                             ),
                           ),
                         ],
-                      ),
+                      )
                     ),
                   ),
                 ),
@@ -112,9 +107,9 @@ class _ClassPageState extends State<ClassPage> {
                   child: ListView(
                     children: classListProvider
                         .classes // Access classes list from provider
-                        .map((clas) => ListWidget(
-                            title: clas.classTitle,
-                            description: clas.classDescription))
+                        .map((classes) => ListWidget(
+                            title: classes.classTitle,
+                            description: classes.classDescription))
                         .toList(),
                   ),
                 )

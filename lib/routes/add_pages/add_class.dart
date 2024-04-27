@@ -11,8 +11,6 @@ class _AddClassState extends State<AddClass> {
   final _titleController = TextEditingController(); // Controller for Class Title
   final _descriptionController = TextEditingController(); // Controller for Description
 
-  String? _selectedCategory; // Variable to store selected dropdown value
-
   @override
   void dispose() {
     _titleController.dispose();
@@ -25,12 +23,11 @@ class _AddClassState extends State<AddClass> {
 }
 
 
-
   void addClass(BuildContext context) {
     final classTitle = _titleController.text;
     final classDescription = _descriptionController.text;
 
-    // Validate user input (optional)
+    // Validate user input
     if (classTitle.isEmpty || classDescription.isEmpty) {
       // Show error message or prevent submission
       return;
@@ -68,32 +65,7 @@ class _AddClassState extends State<AddClass> {
               decoration: const InputDecoration(hintText: "Description"),
             ),
             const SizedBox(height: 10),
-            DropdownButton<String>(
-              value: _selectedCategory, // Set initial selected value
-              items: const [
-                DropdownMenuItem(
-                  value: 'Business',
-                  child: Text('Business'),
-                ),
-                DropdownMenuItem(
-                  value: 'Academic',
-                  child: Text('Academic'),
-                ),
-                DropdownMenuItem(
-                  value: 'Tech',
-                  child: Text('Tech'),
-                ),
-                DropdownMenuItem(
-                  value: 'Other',
-                  child: Text('Other'),
-                ),
-              ],
-              onChanged: (String? value) {
-                setState(() {
-                  _selectedCategory = value;
-                });
-              },
-            ),
+
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: submitClass,
