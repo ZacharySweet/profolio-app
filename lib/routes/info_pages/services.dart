@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:profolio/widgets/community_list_widget.dart';
 import 'package:profolio/widgets/providers/service_data_and_provider.dart'; // Import ServiceListProvider
 import 'package:profolio/routes/add_pages/add_service.dart'; // Import AddService route
 import 'package:profolio/widgets/section_divider.dart';
-import 'package:profolio/widgets/list_widget.dart';
 import 'package:provider/provider.dart'; // Import Provider
 
 class ServicePage extends StatefulWidget {
@@ -13,22 +13,30 @@ class ServicePage extends StatefulWidget {
 }
 
 class _ServicePageState extends State<ServicePage> {
-  // No need for a separate services list variable
+  int totalHours = 0;
 
-  void addService(String serviceTitle, String serviceDescription) async {
+  void addService(
+      String serviceTitle, String serviceDescription, int serviceHours) async {
     //  await Navigator.push(
     // context,
     //MaterialPageRoute(builder: (context) => const AddService()),
     //);
 
     Provider.of<ServiceListProvider>(context, listen: false)
-        .addService(serviceTitle, serviceDescription);
+        .addService(serviceTitle, serviceDescription, serviceHours);
+
+    setState(() {
+      totalHours += serviceHours;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final serviceListProvider =
         Provider.of<ServiceListProvider>(context); // Access provider
+
+    totalHours = serviceListProvider.services
+        .fold(0, (sum, service) => sum + service.serviceHours);
 
     return Scaffold(
       appBar: AppBar(
@@ -58,7 +66,7 @@ class _ServicePageState extends State<ServicePage> {
                             child: Column(
                               children: [
                                 const Text(
-                                  "Services are a crucial part of your high school resume. Being a high ranking member of various services can greatly increase your odds of being accepted into your dream college.",
+                                  "Community service is another important part of your resume. It is a fantastic way of showing that you are both an active and positive contributer to the world around you.",
                                   overflow: TextOverflow.fade,
                                   maxLines: null,
                                   softWrap: true,
@@ -95,7 +103,9 @@ class _ServicePageState extends State<ServicePage> {
 
                                         // Use the stored provider instance to add the service
                                         serviceListProvider.addService(
-                                            serviceTitle, serviceDescription);
+                                            serviceTitle,
+                                            serviceDescription,
+                                            serviceHours ?? 0);
                                       }
                                     },
                                     child: const Text("Add Service"),
@@ -110,14 +120,16 @@ class _ServicePageState extends State<ServicePage> {
                   ),
                 ),
                 // List of clubs section
-                const SectionDivider(dividerText: "Your Services"),
+                const DividerAndText(dividerText: "Your Services"),
                 Expanded(
                   child: ListView(
                     children: serviceListProvider
                         .services // Access services list from provider
-                        .map((service) => ListWidget(
-                            title: service.serviceTitle,
-                            description: service.serviceDescription))
+                        .map((service) => CommunityListWidget(
+                              title: service.serviceTitle,
+                              description: service.serviceDescription,
+                              hours: service.serviceHours,
+                            ))
                         .toList(),
                   ),
                 )
