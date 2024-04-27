@@ -5,55 +5,116 @@ import 'package:profolio/widgets/home_screen_pages/classes.dart';
 import 'package:profolio/widgets/home_screen_pages/sports.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
+  const MainPage({super.key});
+
   @override
   State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  final List<Widget> pages = [
-    const BasicPage(),
-    const ClassPage(),
-    const ClubPage(),
-    const SportPage(),
-  ];
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            shadowColor: const Color.fromARGB(92, 95, 95, 95),
-            backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-            title: const Row(
-              children: [
-                FlutterLogo(),
-                SizedBox(width: 16),
-                Text("Your Profolio",
-                    style: TextStyle(
-                        color: Colors.black, fontSize: 26, fontFamily: 'Fun'))
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        leading:
+            const Image(image: AssetImage("lib/assets/images/App_Icon.png")),
+        title: const Text(
+          "PROFOLIO",
+          style: TextStyle(color: Colors.black, fontFamily: "NotoBasic"),
+        ),
+        actions: [
+          GestureDetector(
+            child: const Icon(Icons.download, color: Colors.black),
+          )
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          children: [
+            // Static information section
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+              child: Row(
+                children: [
+                  Column(children: [
+                    const Text(
+                      "Zachary Sweet",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    Container(
+                        decoration: const BoxDecoration(color: Colors.red),
+                        child: const Text("Junior"))
+                  ])
+                ],
+              ),
             ),
-            bottom: const TabBar(
-              labelStyle: TextStyle(
-                  fontWeight: FontWeight.w300, fontFamily: "WorkSans"),
-              unselectedLabelStyle: TextStyle(
-                  fontWeight: FontWeight.w300, fontFamily: "WorkSans"),
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.black,
-              tabs: <Widget>[
-                Tab(text: "Basic"),
-                Tab(text: "Classes"),
-                Tab(text: "Clubs"),
-                Tab(text: "Sports")
-              ],
+            const DividerAndText(dividerText: "Your Information"),
+            // Scrollable sectio n with HomeCard widgets
+            Expanded(
+              // Use Expanded to fill remaining space
+              child: ListView(
+                children: const [
+                  HomeCard(
+                    cardText: "Clubs",
+                    descriptionText: "Manage Your Clubs",
+                    backgroundGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.fromARGB(255, 52, 116, 255),
+                        Color.fromARGB(255, 118, 173, 255),
+                      ],
+                    ),
+                  ),
+                  HomeCard(
+                    cardText: "Sports",
+                    descriptionText: "Manage Your Sports",
+                    backgroundGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.fromARGB(255, 52, 116, 255),
+                        Color.fromARGB(255, 118, 173, 255),
+                      ],
+                    ),
+                  ),
+                  HomeCard(
+                    cardText: "Academics",
+                    descriptionText: "Manage Your Academics",
+                    backgroundGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.fromARGB(255, 52, 116, 255),
+                        Color.fromARGB(255, 118, 173, 255),
+                      ],
+                    ),
+                  ),
+                  HomeCard(
+                    cardText: "Community Service",
+                    descriptionText: "Manage Community Service",
+                    backgroundGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.fromARGB(255, 52, 116, 255),
+                        Color.fromARGB(255, 118, 173, 255),
+                      ],
+                    ),
+                  ),
+                  // Add any additional HomeCard widgets here
+                ],
+              ),
             ),
-          ),
-          body: Stack(children: [
-            TabBarView(
-              children: pages,
-            ),
-          ]),
-        ));
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.edit),
+      ),
+    );
   }
 }

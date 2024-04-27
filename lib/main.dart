@@ -14,7 +14,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => SportListProvider()),
         ChangeNotifierProvider(create: (context) => ClassListProvider()),
       ],
-      child: const MaterialApp(home: MainPage(),), // Your main app widget
+      child: const MaterialApp(home: MainPage()), // Your main app widget
     ),
   );
 }
