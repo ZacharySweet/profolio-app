@@ -111,6 +111,14 @@ class MainPageState extends State<MainPage> {
                     },
                   )
                 ],
+              ),
+              const SizedBox(height: 60,),
+              GestureDetector(
+                child: Container(padding: const EdgeInsets.all(7),
+                decoration: const BoxDecoration(color: Colors.red),
+                child: const Text('Export/Share'),
+                ),
+                onTap: () {},
               )
             ],
           ),
