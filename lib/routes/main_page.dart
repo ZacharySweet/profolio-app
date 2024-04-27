@@ -43,11 +43,24 @@ class _MainPageState extends State<MainPage> {
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Zachary Sweet",
-                          style: TextStyle(fontSize: 24),
+                        Row(
+                          children: [
+                            CircleAvatar(child: FlutterLogo()),
+                            SizedBox(width: 10),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Zachary Sweet",
+                                    style: TextStyle(fontSize: 24)),
+                                Text("Junior • 2025",
+                                    style: TextStyle(fontSize: 14)),
+                              ],
+                            )
+                          ],
                         ),
-                        Text("Junior")
+                        SizedBox(height: 8),
+                        Text(
+                            "My name is Zach, I attend Mena high school and I will be graduating in 2025.")
                       ])
                 ],
               ),
