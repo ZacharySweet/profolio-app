@@ -61,7 +61,7 @@ class _AddServiceState extends State<AddService> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: const InputDecoration(hintText: "Action Title"),
+              decoration: const InputDecoration(hintText: "Service Title"),
             ),
             const SizedBox(height: 10),
             TextField(
@@ -71,7 +71,7 @@ class _AddServiceState extends State<AddService> {
             const SizedBox(height: 10),
             TextField(
               controller: _hoursController,
-              decoration: const InputDecoration(hintText: 'For ? hours'),),
+              decoration: const InputDecoration(hintText: 'Number of Hours (ex. 8)'),),
             const SizedBox(height: 10),
             ElevatedButton(
               onPressed: submitService,

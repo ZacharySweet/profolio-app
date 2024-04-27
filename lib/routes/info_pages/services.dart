@@ -63,7 +63,7 @@ class _ServicePageState extends State<ServicePage> {
                             child: Column(
                               children: [
                                 const Text(
-                                  "Services are a crucial part of your high school resume. Being a high ranking member of various services can greatly increase your odds of being accepted into your dream college.",
+                                  "Community service is another important part of your resume. It is a fantastic way of showing that you are both an active and positive contributer to the world around you.",
                                   overflow: TextOverflow.fade,
                                   maxLines: null,
                                   softWrap: true,
