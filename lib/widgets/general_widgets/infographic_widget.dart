@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/routes/add_activity.dart';
+import 'package:profolio/routes/add_club.dart';
 
 class InfographicWidget extends StatelessWidget {
   final String buttonText;
@@ -45,7 +45,7 @@ class InfographicWidget extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const AddActivity()),
+                              builder: (context) => const AddClub()),
                         );
                       },
                       child: Text(buttonText),

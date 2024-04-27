@@ -1,18 +1,43 @@
 import 'package:flutter/material.dart';
 
-class AddSport extends StatelessWidget {
+class AddSport extends StatefulWidget {
   const AddSport({super.key});
 
-  // Function to handle adding the sport
+  @override
+  State<AddSport> createState() => _AddSportState();
+}
+
+class _AddSportState extends State<AddSport> {
+  final _titleController = TextEditingController(); // Controller for Sport Title
+  final _descriptionController = TextEditingController(); // Controller for Description
+
+  String? _selectedCategory; // Variable to store selected dropdown value
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
+
+  void submitSport() {
+  addSport(context); // Access BuildContext from the surrounding scope
+}
+
+
+
   void addSport(BuildContext context) {
-    // You can replace this with your logic to retrieve the text field values
-    String sportTitle = "FBLA";
-    String sportDescription = "president";
+    final clubTitle = _titleController.text;
+    final clubDescription = _descriptionController.text;
 
-    // Here you can perform any further logic, such as validating the input
+    // Validate user input (optional)
+    if (clubTitle.isEmpty || clubDescription.isEmpty) {
+      // Show error message or prevent submission
+      return;
+    }
 
-    // Now, you can navigate back to the previous screen and pass the sport details
-    Navigator.pop(context, [sportTitle, sportDescription]);
+    // Navigate back with user-entered data
+    Navigator.pop(context, [clubTitle, clubDescription]);
   }
 
   @override
@@ -21,12 +46,10 @@ class AddSport extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const Text("Add sport"),
+        title: const Text("Add Sport"),
         actions: [
           GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
+            onTap: () => Navigator.pop(context),
             child: const Icon(Icons.close),
           ),
         ],
@@ -35,16 +58,18 @@ class AddSport extends StatelessWidget {
         padding: const EdgeInsets.all(14.0),
         child: Column(
           children: [
-            const TextField(
-              decoration: InputDecoration(hintText: "Action Title"),
+            TextField(
+              controller: _titleController,
+              decoration: const InputDecoration(hintText: "Action Title"),
             ),
-            const TextField(
-              decoration: InputDecoration(hintText: "Description"),
+            const SizedBox(height: 10),
+            TextField(
+              controller: _descriptionController,
+              decoration: const InputDecoration(hintText: "Description"),
             ),
+            const SizedBox(height: 10),
             DropdownButton<String>(
-              // Define String type for value
-              value: null, // Initially selected value is null
-              // List of DropdownMenuItems
+              value: _selectedCategory, // Set initial selected value
               items: const [
                 DropdownMenuItem(
                   value: 'Business',
@@ -64,17 +89,16 @@ class AddSport extends StatelessWidget {
                 ),
               ],
               onChanged: (String? value) {
-                value;
+                setState(() {
+                  _selectedCategory = value;
+                });
               },
-              // Function to update selected value
             ),
+            const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {
-                // Call the function to add the sport when the button is pressed
-                addSport(context);
-              },
+              onPressed: submitSport,
               child: const Text("Submit"),
-            )
+            ),
           ],
         ),
       ),

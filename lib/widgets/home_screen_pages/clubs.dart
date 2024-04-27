@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/home_screen_pages/club_data_and_provider.dart'; // Import ClubListProvider
-import 'package:profolio/routes/add_activity.dart'; // Import AddActivity route
+import 'package:profolio/widgets/providers/club_data_and_provider.dart'; // Import ClubListProvider
+import 'package:profolio/routes/add_club.dart'; // Import AddClub route
 import 'package:profolio/widgets/general_widgets/divider_and_text.dart';
 import 'package:profolio/widgets/general_widgets/list_widget.dart';
 import 'package:provider/provider.dart'; // Import Provider
@@ -18,7 +18,7 @@ class _ClubPageState extends State<ClubPage> {
 void addClub(String clubTitle, String clubDescription) async {
   //  await Navigator.push(
  // context,
-  //MaterialPageRoute(builder: (context) => const AddActivity()),
+  //MaterialPageRoute(builder: (context) => const AddClub()),
   //);
 
   Provider.of<ClubListProvider>(context, listen: false)
@@ -72,10 +72,10 @@ void addClub(String clubTitle, String clubDescription) async {
   // Access ClubListProvider instance
                                   final clubListProvider = Provider.of<ClubListProvider>(context, listen: false);
 
-  // Navigate to AddActivity and potentially receive data
+  // Navigate to AddClub and potentially receive data
                                   final result = await Navigator.push(
                                   context,
-                                 MaterialPageRoute(builder: (context) => const AddActivity()),
+                                 MaterialPageRoute(builder: (context) => const AddClub()),
                                  );
 
   // Check if data is returned (optional)
@@ -88,7 +88,7 @@ void addClub(String clubTitle, String clubDescription) async {
                                 }
                               },
 
-                                child: const Text("buttonText"),
+                                child: const Text("Add Club"),
                               ),
                             ),
                           ],
