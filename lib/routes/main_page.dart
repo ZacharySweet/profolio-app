@@ -4,7 +4,7 @@ import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/widgets/divider_and_text.dart';
 import 'package:profolio/widgets/home_card.dart';
 import 'package:profolio/routes/info_pages/services.dart';
-import 'package:profolio/widgets/home_screen_pages/sports.dart';
+import 'package:profolio/routes/info_pages/sports.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
