@@ -13,13 +13,8 @@ class SportPage extends StatefulWidget {
 }
 
 class _SportPageState extends State<SportPage> {
-  // No need for a separate sports list variable
 
   void addSport(String sportTitle, String sportDescription) async {
-    //  await Navigator.push(
-    // context,
-    //MaterialPageRoute(builder: (context) => const AddSport()),
-    //);
 
     Provider.of<SportListProvider>(context, listen: false)
         .addSport(sportTitle, sportDescription);
@@ -85,7 +80,7 @@ class _SportPageState extends State<SportPage> {
                                                 const AddSport()),
                                       );
       
-                                      // Check if data is returned (optional)
+                                      // Check if data is returned
                                       if (result != null) {
                                         final sportTitle = result[0];
                                         final sportDescription = result[1];

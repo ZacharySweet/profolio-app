@@ -26,17 +26,17 @@ class _AddSportState extends State<AddSport> {
 
 
   void addSport(BuildContext context) {
-    final clubTitle = _titleController.text;
-    final clubDescription = _descriptionController.text;
+    final sportTitle = _titleController.text;
+    final sportDescription = _descriptionController.text;
 
     // Validate user input (optional)
-    if (clubTitle.isEmpty || clubDescription.isEmpty) {
+    if (sportTitle.isEmpty || sportDescription.isEmpty) {
       // Show error message or prevent submission
       return;
     }
 
     // Navigate back with user-entered data
-    Navigator.pop(context, [clubTitle, clubDescription]);
+    Navigator.pop(context, [sportTitle, sportDescription]);
   }
 
   @override
@@ -67,6 +67,11 @@ class _AddSportState extends State<AddSport> {
               decoration: const InputDecoration(hintText: "Description"),
             ),
             const SizedBox(height: 10),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: submitSport,
+              child: const Text("Submit"),
+            ),
           ],
         ),
       ),
