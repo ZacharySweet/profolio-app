@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/routes/add_club.dart';
+import 'package:profolio/routes/add_pages/add_club.dart';
 
 class InfographicWidget extends StatelessWidget {
   final String buttonText;

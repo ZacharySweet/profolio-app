@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/general_widgets/divider_and_text.dart';
-import 'package:profolio/widgets/general_widgets/home_card.dart';
+import 'package:profolio/routes/info_pages/clubs.dart';
+import 'package:profolio/widgets/divider_and_text.dart';
+import 'package:profolio/widgets/home_card.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -32,21 +33,19 @@ class _MainPageState extends State<MainPage> {
         child: Column(
           children: [
             // Static information section
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
               child: Row(
                 children: [
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                    const Text(
-                      "Zachary Sweet",
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    Container(
-                        decoration: const BoxDecoration(color: Colors.red),
-                        child: const Text("Junior"))
-                  ])
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Zachary Sweet",
+                          style: TextStyle(fontSize: 24),
+                        ),
+                        Text("Junior")
+                      ])
                 ],
               ),
             ),
@@ -55,53 +54,67 @@ class _MainPageState extends State<MainPage> {
             Expanded(
               // Use Expanded to fill remaining space
               child: ListView(
-                children: const [
-                  HomeCard(
-                    cardText: "Clubs",
-                    descriptionText: "Manage Your Clubs",
-                    backgroundGradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color.fromARGB(255, 52, 116, 255),
-                        Color.fromARGB(255, 118, 173, 255),
-                      ],
+                children: [
+                  GestureDetector(
+                    child: const HomeCard(
+                      cardText: "Clubs",
+                      descriptionText: "Manage Your Clubs",
+                      backgroundGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color.fromARGB(255, 52, 116, 255),
+                          Color.fromARGB(255, 118, 173, 255),
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ClubPage()));
+                    },
+                  ),
+                  GestureDetector(
+                    child: const HomeCard(
+                      cardText: "Sports",
+                      descriptionText: "Manage Your Sports",
+                      backgroundGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color.fromARGB(255, 52, 116, 255),
+                          Color.fromARGB(255, 118, 173, 255),
+                        ],
+                      ),
                     ),
                   ),
-                  HomeCard(
-                    cardText: "Sports",
-                    descriptionText: "Manage Your Sports",
-                    backgroundGradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color.fromARGB(255, 52, 116, 255),
-                        Color.fromARGB(255, 118, 173, 255),
-                      ],
+                  GestureDetector(
+                    child: const HomeCard(
+                      cardText: "Academics",
+                      descriptionText: "Manage Your Academics",
+                      backgroundGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color.fromARGB(255, 52, 116, 255),
+                          Color.fromARGB(255, 118, 173, 255),
+                        ],
+                      ),
                     ),
                   ),
-                  HomeCard(
-                    cardText: "Academics",
-                    descriptionText: "Manage Your Academics",
-                    backgroundGradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color.fromARGB(255, 52, 116, 255),
-                        Color.fromARGB(255, 118, 173, 255),
-                      ],
-                    ),
-                  ),
-                  HomeCard(
-                    cardText: "Community Service",
-                    descriptionText: "Manage Community Service",
-                    backgroundGradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color.fromARGB(255, 52, 116, 255),
-                        Color.fromARGB(255, 118, 173, 255),
-                      ],
+                  GestureDetector(
+                    child: const HomeCard(
+                      cardText: "Community Service",
+                      descriptionText: "Manage Community Service",
+                      backgroundGradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color.fromARGB(255, 52, 116, 255),
+                          Color.fromARGB(255, 118, 173, 255),
+                        ],
+                      ),
                     ),
                   ),
                   // Add any additional HomeCard widgets here
@@ -112,7 +125,12 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ClubPage()),
+          );
+        },
         child: const Icon(Icons.edit),
       ),
     );
