@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/widgets/providers/club_data_and_provider.dart'; // Import ClubListProvider
 import 'package:profolio/routes/add_pages/add_club.dart'; // Import AddClub route
-import 'package:profolio/widgets/divider_and_text.dart';
+import 'package:profolio/widgets/section_divider.dart';
 import 'package:profolio/widgets/list_widget.dart';
 import 'package:provider/provider.dart'; // Import Provider
 
@@ -98,7 +98,7 @@ class _ClubPageState extends State<ClubPage> {
                 ),
               ),
               // List of clubs section
-              const DividerAndText(dividerText: "Your Clubs"),
+              const SectionDivider(dividerText: "Your Clubs"),
               Expanded(
                 child: ListView(
                   children:

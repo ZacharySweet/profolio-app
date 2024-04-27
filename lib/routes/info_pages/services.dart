@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/widgets/providers/service_data_and_provider.dart'; // Import ServiceListProvider
 import 'package:profolio/routes/add_pages/add_service.dart'; // Import AddService route
-import 'package:profolio/widgets/divider_and_text.dart';
+import 'package:profolio/widgets/section_divider.dart';
 import 'package:profolio/widgets/list_widget.dart';
 import 'package:provider/provider.dart'; // Import Provider
 
@@ -31,7 +31,9 @@ class _ServicePageState extends State<ServicePage> {
         Provider.of<ServiceListProvider>(context); // Access provider
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My Community Service'),),
+      appBar: AppBar(
+        title: const Text('My Community Service'),
+      ),
       body: Container(
           color: const Color.fromARGB(255, 246, 246, 246),
           child: Padding(
@@ -77,7 +79,7 @@ class _ServicePageState extends State<ServicePage> {
                                           Provider.of<ServiceListProvider>(
                                               context,
                                               listen: false);
-      
+
                                       // Navigate to AddService and potentially receive data
                                       final result = await Navigator.push(
                                         context,
@@ -85,12 +87,12 @@ class _ServicePageState extends State<ServicePage> {
                                             builder: (context) =>
                                                 const AddService()),
                                       );
-      
+
                                       // Check if data is returned (optional)
                                       if (result != null) {
                                         final serviceTitle = result[0];
                                         final serviceDescription = result[1];
-      
+
                                         // Use the stored provider instance to add the service
                                         serviceListProvider.addService(
                                             serviceTitle, serviceDescription);
@@ -108,7 +110,7 @@ class _ServicePageState extends State<ServicePage> {
                   ),
                 ),
                 // List of clubs section
-                const DividerAndText(dividerText: "Your Services"),
+                const SectionDivider(dividerText: "Your Services"),
                 Expanded(
                   child: ListView(
                     children: serviceListProvider

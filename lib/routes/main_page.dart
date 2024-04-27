@@ -1,171 +1,96 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/routes/info_pages/classes.dart';
-import 'package:profolio/routes/info_pages/clubs.dart';
-import 'package:profolio/widgets/divider_and_text.dart';
-import 'package:profolio/widgets/home_card.dart';
-import 'package:profolio/routes/info_pages/services.dart';
-import 'package:profolio/widgets/home_screen_pages/sports.dart';
+import 'package:profolio/widgets/list_widget.dart';
+import 'package:profolio/widgets/section_divider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<MainPage> createState() => MainPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-        leading:
-            const Image(image: AssetImage("lib/assets/images/App_Icon.png")),
-        title: const Text(
-          "PROFOLIO",
-          style: TextStyle(color: Colors.black, fontFamily: "NotoBasic"),
-        ),
-        actions: [
-          GestureDetector(
-            child: const Icon(Icons.download, color: Colors.black),
-          )
-        ],
-      ),
       body: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            // Static information section
-            const Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
-              child: Row(
+        padding: const EdgeInsets.all(16),
+        child: Container(
+          decoration:
+              const BoxDecoration(color: Color.fromARGB(255, 245, 245, 245)),
+          child: Column(
+            children: [
+              // User's basic information and stuff
+              const Column(
                 children: [
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            CircleAvatar(child: FlutterLogo()),
-                            SizedBox(width: 10),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Zachary Sweet",
-                                    style: TextStyle(fontSize: 24)),
-                                Text("Junior • 2025",
-                                    style: TextStyle(fontSize: 14)),
-                              ],
-                            )
-                          ],
+                  SizedBox(height: 32),
+                  Text("Zachary Sweet", style: TextStyle(fontSize: 34)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Junior at Mena High School",
+                          style: TextStyle(fontSize: 14)),
+                    ],
+                  ),
+                ],
+              ),
+
+              // The user's about me section
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 12, 30, 0),
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        color: Colors.white,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(62, 56, 56, 56),
+                            spreadRadius: 0.5,
+                            blurRadius: 4,
+                          ),
+                        ],
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Text(
+                          "This is an example about me that i think is really cool and its gonna be wrapped with a box and the text is really awesome and then",
+                          textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 8),
-                        Text(
-                            "My name is Zach, I attend Mena high school and I will be graduating in 2025.")
-                      ])
-                ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const DividerAndText(dividerText: "Your Information"),
-            // Scrollable sectio n with HomeCard widgets
-            Expanded(
-              // Use Expanded to fill remaining space
-              child: ListView(
+              // The card information section
+              const Padding(
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                child: SectionDivider(dividerText: "Your Information"),
+              ),
+              const Column(
                 children: [
-                  GestureDetector(
-                    child: const HomeCard(
-                      cardText: "Clubs",
-                      descriptionText: "Manage Your Clubs",
-                      backgroundGradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color.fromARGB(255, 52, 116, 255),
-                          Color.fromARGB(255, 118, 173, 255),
-                        ],
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ClubPage()));
-                    },
+                  ListWidget(
+                    title: "Academics",
+                    description: "Manage Your Grades And Classes",
                   ),
-                  GestureDetector(
-                    child: const HomeCard(
-                      cardText: "Sports",
-                      descriptionText: "Manage Your Sports",
-                      backgroundGradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color.fromARGB(255, 52, 116, 255),
-                          Color.fromARGB(255, 118, 173, 255),
-                        ],
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SportPage()));
-                    },
+                  ListWidget(
+                    title: "Clubs",
+                    description: "Manage Your Clubs And Organizations",
                   ),
-                  GestureDetector(
-                    child: const HomeCard(
-                      cardText: "Academics",
-                      descriptionText: "Manage Your Academics",
-                      backgroundGradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color.fromARGB(255, 52, 116, 255),
-                          Color.fromARGB(255, 118, 173, 255),
-                        ],
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ClassPage()));
-                    },
+                  ListWidget(
+                    title: "Sports",
+                    description: "Manage Your Athletic Participation",
                   ),
-                  GestureDetector(
-                    child: const HomeCard(
-                      cardText: "Community Service",
-                      descriptionText: "Manage Community Service",
-                      backgroundGradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Color.fromARGB(255, 52, 116, 255),
-                          Color.fromARGB(255, 118, 173, 255),
-                        ],
-                      ),
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ServicePage()));
-                    },
-                  ),
-                  // Add any additional HomeCard widgets here
+                  ListWidget(
+                    title: "Community Service",
+                    description: "Manage Your Community Service Hours",
+                  )
                 ],
-              ),
-            ),
-          ],
+              )
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ClubPage()),
-          );
-        },
-        child: const Icon(Icons.edit),
       ),
     );
   }
