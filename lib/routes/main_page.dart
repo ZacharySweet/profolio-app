@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:profolio/routes/info_pages/classes.dart';
 import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/widgets/divider_and_text.dart';
 import 'package:profolio/widgets/home_card.dart';
+import 'package:profolio/routes/info_pages/services.dart';
+import 'package:profolio/widgets/home_screen_pages/sports.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -88,6 +91,12 @@ class _MainPageState extends State<MainPage> {
                         ],
                       ),
                     ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SportPage()));
+                    },
                   ),
                   GestureDetector(
                     child: const HomeCard(
@@ -102,6 +111,12 @@ class _MainPageState extends State<MainPage> {
                         ],
                       ),
                     ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ClassPage()));
+                    },
                   ),
                   GestureDetector(
                     child: const HomeCard(
@@ -116,6 +131,12 @@ class _MainPageState extends State<MainPage> {
                         ],
                       ),
                     ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ServicePage()));
+                    },
                   ),
                   // Add any additional HomeCard widgets here
                 ],

@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/widgets/providers/sport_data_and_provider.dart'; // Import SportListProvider
-import 'package:profolio/routes/add_pages/add_sport.dart'; // Import AddSport route
+import 'package:profolio/widgets/providers/service_data_and_provider.dart'; // Import ServiceListProvider
+import 'package:profolio/routes/add_pages/add_service.dart'; // Import AddService route
 import 'package:profolio/widgets/divider_and_text.dart';
 import 'package:profolio/widgets/list_widget.dart';
 import 'package:provider/provider.dart'; // Import Provider
 
-class SportPage extends StatefulWidget {
-  const SportPage({super.key});
+class ServicePage extends StatefulWidget {
+  const ServicePage({super.key});
 
   @override
-  State<SportPage> createState() => _SportPageState();
+  State<ServicePage> createState() => _ServicePageState();
 }
 
-class _SportPageState extends State<SportPage> {
-  // No need for a separate sports list variable
+class _ServicePageState extends State<ServicePage> {
+  // No need for a separate services list variable
 
-  void addSport(String sportTitle, String sportDescription) async {
+  void addService(String serviceTitle, String serviceDescription) async {
     //  await Navigator.push(
     // context,
-    //MaterialPageRoute(builder: (context) => const AddSport()),
+    //MaterialPageRoute(builder: (context) => const AddService()),
     //);
 
-    Provider.of<SportListProvider>(context, listen: false)
-        .addSport(sportTitle, sportDescription);
+    Provider.of<ServiceListProvider>(context, listen: false)
+        .addService(serviceTitle, serviceDescription);
   }
 
   @override
   Widget build(BuildContext context) {
-    final sportListProvider =
-        Provider.of<SportListProvider>(context); // Access provider
+    final serviceListProvider =
+        Provider.of<ServiceListProvider>(context); // Access provider
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My Sports'),),
+      appBar: AppBar(title: const Text('My Community Service'),),
       body: Container(
           color: const Color.fromARGB(255, 246, 246, 246),
           child: Padding(
@@ -56,7 +56,7 @@ class _SportPageState extends State<SportPage> {
                             child: Column(
                               children: [
                                 const Text(
-                                  "Sports are a crucial part of your high school resume. Being a high ranking member of various sports can greatly increase your odds of being accepted into your dream college.",
+                                  "Services are a crucial part of your high school resume. Being a high ranking member of various services can greatly increase your odds of being accepted into your dream college.",
                                   overflow: TextOverflow.fade,
                                   maxLines: null,
                                   softWrap: true,
@@ -72,30 +72,31 @@ class _SportPageState extends State<SportPage> {
                                   alignment: Alignment.centerRight,
                                   child: ElevatedButton(
                                     onPressed: () async {
-                                      // Access SportListProvider instance
-                                      final sportListProvider =
-                                          Provider.of<SportListProvider>(context,
+                                      // Access ServiceListProvider instance
+                                      final serviceListProvider =
+                                          Provider.of<ServiceListProvider>(
+                                              context,
                                               listen: false);
       
-                                      // Navigate to AddSport and potentially receive data
+                                      // Navigate to AddService and potentially receive data
                                       final result = await Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const AddSport()),
+                                                const AddService()),
                                       );
       
                                       // Check if data is returned (optional)
                                       if (result != null) {
-                                        final sportTitle = result[0];
-                                        final sportDescription = result[1];
+                                        final serviceTitle = result[0];
+                                        final serviceDescription = result[1];
       
-                                        // Use the stored provider instance to add the sport
-                                        sportListProvider.addSport(
-                                            sportTitle, sportDescription);
+                                        // Use the stored provider instance to add the service
+                                        serviceListProvider.addService(
+                                            serviceTitle, serviceDescription);
                                       }
                                     },
-                                    child: const Text("Add Sport"),
+                                    child: const Text("Add Service"),
                                   ),
                                 ),
                               ],
@@ -106,15 +107,15 @@ class _SportPageState extends State<SportPage> {
                     ),
                   ),
                 ),
-                // List of sports section
-                const DividerAndText(dividerText: "Your Sports"),
+                // List of clubs section
+                const DividerAndText(dividerText: "Your Services"),
                 Expanded(
                   child: ListView(
-                    children: sportListProvider
-                        .sports // Access sports list from provider
-                        .map((sport) => ListWidget(
-                            title: sport.sportTitle,
-                            description: sport.sportDescription))
+                    children: serviceListProvider
+                        .services // Access services list from provider
+                        .map((service) => ListWidget(
+                            title: service.serviceTitle,
+                            description: service.serviceDescription))
                         .toList(),
                   ),
                 )
