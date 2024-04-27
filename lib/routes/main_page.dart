@@ -116,7 +116,7 @@ class MainPageState extends State<MainPage> {
               GestureDetector(
                 child: Container(padding: const EdgeInsets.all(7),
                 decoration: const BoxDecoration(color: Colors.red),
-                child: const Text('Export/Share'),
+                child: const Text('Print/Share'),
                 ),
                 onTap: () {},
               )
