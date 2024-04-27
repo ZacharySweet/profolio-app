@@ -32,25 +32,24 @@ class _MainPageState extends State<MainPage> {
         child: Column(
           children: [
             // Static information section
-            const Padding(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 12),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
               child: Row(
                 children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(children: [
-                      Text(
-                        "Zachary Sweet",
-                        style: TextStyle(fontSize: 24),
-                      ),
-                      Text("Junior")
-                    ]),
-                  )
+                  Column(children: [
+                    const Text(
+                      "Zachary Sweet",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    Container(
+                        decoration: const BoxDecoration(color: Colors.red),
+                        child: const Text("Junior"))
+                  ])
                 ],
               ),
             ),
             const DividerAndText(dividerText: "Your Information"),
-            // Scrollable section with HomeCard widgets
+            // Scrollable sectio n with HomeCard widgets
             Expanded(
               // Use Expanded to fill remaining space
               child: ListView(
