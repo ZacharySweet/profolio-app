@@ -9,7 +9,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => ClubListProvider()),
       ],
-      child: const MaterialApp(home: MainPage(),), // Your main app widget
+      child: const MaterialApp(home: MainPage()), // Your main app widget
     ),
   );
 }

@@ -19,12 +19,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - lib/assets/images/temp.jpg
-    - lib/assets/images/van-orang.jpg
+    - lib/assets/images/App_Icon.png
   fonts:
     - family: WorkSans
       fonts:
         - asset: lib/assets/fonts/worksans.ttf
-    - family: Fun
+    - family: NotoSans
       fonts:
-        - asset: lib/assets/fonts/fun.ttf
+        - asset: lib/assets/fonts/NotoBasic.ttf
+        - asset: lib/assets/fonts/NotoBold.ttf
