@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:profolio/routes/info_pages/classes.dart';
+import 'package:profolio/routes/info_pages/clubs.dart';
+import 'package:profolio/routes/info_pages/services.dart';
+import 'package:profolio/routes/info_pages/sports.dart';
 import 'package:profolio/widgets/list_widget.dart';
 import 'package:profolio/widgets/section_divider.dart';
 
@@ -68,23 +72,43 @@ class MainPageState extends State<MainPage> {
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: SectionDivider(dividerText: "Your Information"),
               ),
-              const Column(
+              Column(
                 children: [
-                  ListWidget(
-                    title: "Academics",
-                    description: "Manage Your Grades And Classes",
+                  GestureDetector(
+                    child: const ListWidget(
+                      title: "Academics",
+                      description: "Manage Your Grades And Classes",
+                    ),
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ClassPage()));
+                    },
                   ),
-                  ListWidget(
-                    title: "Clubs",
-                    description: "Manage Your Clubs And Organizations",
+                  GestureDetector(
+                    child: const ListWidget(
+                      title: "Clubs",
+                      description: "Manage Your Clubs And Organizations",
+                    ),
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ClubPage()));
+                    },
                   ),
-                  ListWidget(
-                    title: "Sports",
-                    description: "Manage Your Athletic Participation",
+                  GestureDetector(
+                    child: const ListWidget(
+                      title: "Sports",
+                      description: "Manage Your Athletic Participation",
+                    ),
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SportPage()));
+                    },
                   ),
-                  ListWidget(
-                    title: "Community Service",
-                    description: "Manage Your Community Service Hours",
+                  GestureDetector(
+                    child: const ListWidget(
+                      title: "Community Service",
+                      description: "Manage Your Community Service Hours",
+                    ),
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ServicePage()));
+                    },
                   )
                 ],
               )
