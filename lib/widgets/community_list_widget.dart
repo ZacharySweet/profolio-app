@@ -35,6 +35,7 @@ class CommunityListWidget extends StatelessWidget {
                 children: [
                   Text(title, textAlign: TextAlign.left),
                   Text(description, textAlign: TextAlign.left),
+                  Row(children: [const Text('For '), Text(hours.toString()), const Text(' hours')],)
                 ],
               ),
             ],
