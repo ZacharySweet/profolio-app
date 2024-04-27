@@ -32,8 +32,8 @@ class ListWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, textAlign: TextAlign.left),
-                  Text(description, textAlign: TextAlign.left),
+                  Text(title, style: const TextStyle(fontSize: 18)),
+                  Text(description, style: const TextStyle(fontSize: 12)),
                 ],
               ),
             ],

@@ -21,10 +21,10 @@ flutter:
   assets:
     - lib/assets/images/App_Icon.png
   fonts:
-    - family: WorkSans
+    - family: SFPro
       fonts:
-        - asset: lib/assets/fonts/worksans.ttf
-    - family: NotoSans
-      fonts:
-        - asset: lib/assets/fonts/NotoBasic.ttf
-        - asset: lib/assets/fonts/NotoBold.ttf
+        - asset: lib/assets/fonts/ProSuperLight.ttf
+        - asset: lib/assets/fonts/ProBold.otf
+        - asset: lib/assets/fonts/ProLight.otf
+        - asset: lib/assets/fonts/ProMedium.otf
+        - asset: lib/assets/fonts/ProRegular.otf

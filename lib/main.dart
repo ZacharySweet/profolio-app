@@ -6,7 +6,6 @@ import 'package:profolio/widgets/providers/sport_data_and_provider.dart';
 import 'package:profolio/widgets/providers/service_data_and_provider.dart';
 import 'package:profolio/widgets/providers/class_data_and_provider.dart';
 
-
 void main() {
   runApp(
     MultiProvider(
@@ -14,10 +13,14 @@ void main() {
         ChangeNotifierProvider(create: (context) => ClubListProvider()),
         ChangeNotifierProvider(create: (context) => SportListProvider()),
         ChangeNotifierProvider(create: (context) => ClassListProvider()),
-        ChangeNotifierProvider(create: (context) => ServiceListProvider()),
-
+        ChangeNotifierProvider(create: (context) => ServiceListProvider())
       ],
-      child: const MaterialApp(home: MainPage()), // Your main app widget
+      child: MaterialApp(
+          theme: ThemeData(
+            // Override defaults
+            fontFamily: 'SFPro',
+          ),
+          home: const MainPage()),
     ),
   );
 }
