@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/widgets/providers/class_data_and_provider.dart'; // Import ClassListProvider
 import 'package:profolio/routes/add_pages/add_class.dart'; // Import AddClass route
-import 'package:profolio/widgets/divider_and_text.dart';
+import 'package:profolio/widgets/section_divider.dart';
 import 'package:profolio/widgets/list_widget.dart';
 import 'package:provider/provider.dart'; // Import Provider
 
@@ -26,7 +26,9 @@ class _ClassPageState extends State<ClassPage> {
         Provider.of<ClassListProvider>(context); // Access provider
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My Academics'),),
+      appBar: AppBar(
+        title: const Text('My Academics'),
+      ),
       body: Container(
           color: const Color.fromARGB(255, 246, 246, 246),
           child: Padding(
@@ -69,9 +71,10 @@ class _ClassPageState extends State<ClassPage> {
                                     onPressed: () async {
                                       // Access ClassListProvider instance
                                       final classListProvider =
-                                          Provider.of<ClassListProvider>(context,
+                                          Provider.of<ClassListProvider>(
+                                              context,
                                               listen: false);
-      
+
                                       // Navigate to AddClass and potentially receive data
                                       final result = await Navigator.push(
                                         context,
@@ -79,12 +82,12 @@ class _ClassPageState extends State<ClassPage> {
                                             builder: (context) =>
                                                 const AddClass()),
                                       );
-      
+
                                       // Check if data is returned (optional)
                                       if (result != null) {
                                         final classTitle = result[0];
                                         final classDescription = result[1];
-      
+
                                         // Use the stored provider instance to add the class
                                         classListProvider.addClass(
                                             classTitle, classDescription);
@@ -102,7 +105,7 @@ class _ClassPageState extends State<ClassPage> {
                   ),
                 ),
                 // List of classes section
-                const DividerAndText(dividerText: "Your Classes"),
+                const SectionDivider(dividerText: "Your Classes"),
                 Expanded(
                   child: ListView(
                     children: classListProvider

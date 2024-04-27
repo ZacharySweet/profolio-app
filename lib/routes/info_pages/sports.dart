@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:profolio/widgets/providers/sport_data_and_provider.dart'; // Import SportListProvider
 import 'package:profolio/routes/add_pages/add_sport.dart'; // Import AddSport route
-import 'package:profolio/widgets/divider_and_text.dart';
+import 'package:profolio/widgets/section_divider.dart';
 import 'package:profolio/widgets/list_widget.dart';
 import 'package:provider/provider.dart'; // Import Provider
 
@@ -26,7 +26,9 @@ class _SportPageState extends State<SportPage> {
         Provider.of<SportListProvider>(context); // Access provider
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My Sports'),),
+      appBar: AppBar(
+        title: const Text('My Sports'),
+      ),
       body: Container(
           color: const Color.fromARGB(255, 246, 246, 246),
           child: Padding(
@@ -69,9 +71,10 @@ class _SportPageState extends State<SportPage> {
                                     onPressed: () async {
                                       // Access SportListProvider instance
                                       final sportListProvider =
-                                          Provider.of<SportListProvider>(context,
+                                          Provider.of<SportListProvider>(
+                                              context,
                                               listen: false);
-      
+
                                       // Navigate to AddSport and potentially receive data
                                       final result = await Navigator.push(
                                         context,
@@ -84,7 +87,7 @@ class _SportPageState extends State<SportPage> {
                                       if (result != null) {
                                         final sportTitle = result[0];
                                         final sportDescription = result[1];
-      
+
                                         // Use the stored provider instance to add the sport
                                         sportListProvider.addSport(
                                             sportTitle, sportDescription);
@@ -102,7 +105,7 @@ class _SportPageState extends State<SportPage> {
                   ),
                 ),
                 // List of sports section
-                const DividerAndText(dividerText: "Your Sports"),
+                const SectionDivider(dividerText: "Your Sports"),
                 Expanded(
                   child: ListView(
                     children: sportListProvider

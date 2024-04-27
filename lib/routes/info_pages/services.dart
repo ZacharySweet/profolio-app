@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:profolio/widgets/community_list_widget.dart';
 import 'package:profolio/widgets/providers/service_data_and_provider.dart'; // Import ServiceListProvider
 import 'package:profolio/routes/add_pages/add_service.dart'; // Import AddService route
-import 'package:profolio/widgets/divider_and_text.dart';
+import 'package:profolio/widgets/section_divider.dart';
 import 'package:provider/provider.dart'; // Import Provider
 
 class ServicePage extends StatefulWidget {
@@ -13,10 +13,10 @@ class ServicePage extends StatefulWidget {
 }
 
 class _ServicePageState extends State<ServicePage> {
-
   int totalHours = 0;
 
-  void addService(String serviceTitle, String serviceDescription, int serviceHours) async {
+  void addService(
+      String serviceTitle, String serviceDescription, int serviceHours) async {
     //  await Navigator.push(
     // context,
     //MaterialPageRoute(builder: (context) => const AddService()),
@@ -35,10 +35,13 @@ class _ServicePageState extends State<ServicePage> {
     final serviceListProvider =
         Provider.of<ServiceListProvider>(context); // Access provider
 
-      totalHours = serviceListProvider.services.fold(0, (sum, service) => sum + service.serviceHours);
+    totalHours = serviceListProvider.services
+        .fold(0, (sum, service) => sum + service.serviceHours);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My Community Service'),),
+      appBar: AppBar(
+        title: const Text('My Community Service'),
+      ),
       body: Container(
           color: const Color.fromARGB(255, 246, 246, 246),
           child: Padding(
@@ -84,7 +87,7 @@ class _ServicePageState extends State<ServicePage> {
                                           Provider.of<ServiceListProvider>(
                                               context,
                                               listen: false);
-      
+
                                       // Navigate to AddService and potentially receive data
                                       final result = await Navigator.push(
                                         context,
@@ -92,16 +95,17 @@ class _ServicePageState extends State<ServicePage> {
                                             builder: (context) =>
                                                 const AddService()),
                                       );
-      
+
                                       // Check if data is returned (optional)
                                       if (result != null) {
                                         final serviceTitle = result[0];
                                         final serviceDescription = result[1];
-                                        final serviceHours = int.tryParse(result[2]);
-      
+
                                         // Use the stored provider instance to add the service
                                         serviceListProvider.addService(
-                                            serviceTitle, serviceDescription, serviceHours ?? 0);
+                                            serviceTitle,
+                                            serviceDescription,
+                                            serviceHours ?? 0);
                                       }
                                     },
                                     child: const Text("Add Service"),
@@ -116,22 +120,16 @@ class _ServicePageState extends State<ServicePage> {
                   ),
                 ),
                 // List of clubs section
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Total Community Service Hours - '),
-                    Text(totalHours.toString())
-                  ],
-                ),
                 const DividerAndText(dividerText: "Your Services"),
                 Expanded(
                   child: ListView(
                     children: serviceListProvider
                         .services // Access services list from provider
                         .map((service) => CommunityListWidget(
-                            title: service.serviceTitle,
-                            description: service.serviceDescription,
-                            hours: service.serviceHours,))
+                              title: service.serviceTitle,
+                              description: service.serviceDescription,
+                              hours: service.serviceHours,
+                            ))
                         .toList(),
                   ),
                 )
