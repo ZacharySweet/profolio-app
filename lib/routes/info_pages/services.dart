@@ -100,6 +100,7 @@ class _ServicePageState extends State<ServicePage> {
                                       if (result != null) {
                                         final serviceTitle = result[0];
                                         final serviceDescription = result[1];
+                                        final serviceHours = result[2];
 
                                         // Use the stored provider instance to add the service
                                         serviceListProvider.addService(
@@ -120,7 +121,7 @@ class _ServicePageState extends State<ServicePage> {
                   ),
                 ),
                 // List of clubs section
-                const DividerAndText(dividerText: "Your Services"),
+                const SectionDivider(dividerText: "Your Services"),
                 Expanded(
                   child: ListView(
                     children: serviceListProvider
