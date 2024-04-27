@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:profolio/routes/add_activity.dart';
+import 'package:profolio/widgets/home_screen_pages/club_data_and_provider.dart'; // Import ClubListProvider
+import 'package:profolio/routes/add_activity.dart'; // Import AddActivity route
 import 'package:profolio/widgets/general_widgets/divider_and_text.dart';
 import 'package:profolio/widgets/general_widgets/list_widget.dart';
+import 'package:provider/provider.dart'; // Import Provider
 
 class ClubPage extends StatefulWidget {
   const ClubPage({super.key});
@@ -10,83 +12,103 @@ class ClubPage extends StatefulWidget {
   State<ClubPage> createState() => _ClubPageState();
 }
 
-// The actual code for the main page
 class _ClubPageState extends State<ClubPage> {
-  List<ListWidget> clubs = []; // List of the clubs
+  // No need for a separate clubs list variable
 
-  void addClub(String clubTitle, String clubPosition) {
-    ListWidget newClub =
-        ListWidget(title: clubTitle, description: clubPosition);
-    setState(() {
-      clubs.add(newClub);
-    });
+void addClub(String clubTitle, String clubDescription) async {
+  //  await Navigator.push(
+ // context,
+  //MaterialPageRoute(builder: (context) => const AddActivity()),
+  //);
+
+  Provider.of<ClubListProvider>(context, listen: false)
+    .addClub(clubTitle, clubDescription);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: const Color.fromARGB(255, 246, 246, 246),
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              // Infographic at the top
-              Padding(
-                  padding: const EdgeInsets.fromLTRB(2, 4, 2, 16),
-                  // Infographic
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        color: Colors.blueAccent,
-                        borderRadius: BorderRadius.all(Radius.circular(12.5))),
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),
-                      child: Row(
-                        children: [
-                          const FlutterLogo(size: 60),
-                          const SizedBox(width: 40),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                const Text(
-                                  "Clubs are a crucial part of your high school resume. Being a high ranking member of various clubs can greately increase your odds of being accepted into your dream college.",
-                                  overflow: TextOverflow.fade,
-                                  maxLines: null,
-                                  softWrap: true,
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: "WorkSans",
-                                      fontSize: 12),
-                                ),
-                                const SizedBox(height: 4),
-                                Align(
-                                  alignment: Alignment
-                                      .centerRight, // Align to the right
-                                  child: ElevatedButton(
-                                    onPressed: () async {
-                                      final result = await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const AddActivity()),
-                                      );
+    final clubListProvider = Provider.of<ClubListProvider>(context); // Access provider
 
-                                      addClub(result[0], result[1]);
-                                    },
-                                    child: const Text("buttonText"),
-                                  ),
-                                ),
-                              ],
+    return Container(
+      color: const Color.fromARGB(255, 246, 246, 246),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            // Infographic section
+            Padding(
+              padding: const EdgeInsets.fromLTRB(2, 4, 2, 16),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.blueAccent,
+                  borderRadius: BorderRadius.all(Radius.circular(12.5)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),
+                  child: Row(
+                    children: [
+                      const FlutterLogo(size: 60),
+                      const SizedBox(width: 40),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            const Text(
+                              "Clubs are a crucial part of your high school resume. Being a high ranking member of various clubs can greatly increase your odds of being accepted into your dream college.",
+                              overflow: TextOverflow.fade,
+                              maxLines: null,
+                              softWrap: true,
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: "WorkSans",
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 4),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: ElevatedButton(
+                                onPressed: () async {
+  // Access ClubListProvider instance
+                                  final clubListProvider = Provider.of<ClubListProvider>(context, listen: false);
+
+  // Navigate to AddActivity and potentially receive data
+                                  final result = await Navigator.push(
+                                  context,
+                                 MaterialPageRoute(builder: (context) => const AddActivity()),
+                                 );
+
+  // Check if data is returned (optional)
+                                if (result != null) {
+                                final clubTitle = result[0];
+                                final clubDescription = result[1];
+
+    // Use the stored provider instance to add the club
+                                clubListProvider.addClub(clubTitle, clubDescription);
+                                }
+                              },
+
+                                child: const Text("buttonText"),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  )),
-              // List of all the clubs the user is in
-              const DividerAndText(dividerText: "Your Clubs"),
-              Expanded(
-                child: ListView(children: clubs.map((club) => club).toList()),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            // List of clubs section
+            const DividerAndText(dividerText: "Your Clubs"),
+            Expanded(
+              child: ListView(
+                children: clubListProvider.clubs // Access clubs list from provider
+                    .map((club) => ListWidget(title: club.clubTitle, description: club.clubDescription))
+                    .toList(),
+              ),
+            
+
               )
             ],
           ),
