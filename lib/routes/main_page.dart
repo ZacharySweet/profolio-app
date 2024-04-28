@@ -1,27 +1,56 @@
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:profolio/routes/export_page.dart';
 import 'package:profolio/routes/info_pages/classes.dart';
 import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/routes/info_pages/services.dart';
 import 'package:profolio/routes/info_pages/sports.dart';
 import 'package:profolio/widgets/list_widget.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
+import 'dart:typed_data';
+import 'package:share_plus/share_plus.dart';
+
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  State<MainPage> createState() => MainPageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class MainPageState extends State<MainPage> {
-  final screenshotKey = GlobalKey<State>();
+class _MainPageState extends State<MainPage> {
+  final GlobalKey globalKey = GlobalKey();
+  WidgetsToImageController controller = WidgetsToImageController();
+
+  Future<void> _capturePng() async {
+  try {
+    final RenderRepaintBoundary boundary = globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+    final ui.Image image = await boundary.toImage();
+    final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+    if (byteData != null) {
+      final Uint8List pngBytes = byteData.buffer.asUint8List();
+      // Use the captured pngBytes here (e.g., share using Share Plus)
+      await Share.shareXFiles([XFile.fromData(pngBytes, name: 'export.png')], text: 'Great portfolio!');
+    } else {
+      // Handle the case where byteData is null (e.g., show an error message)
+      print('Error capturing image');
+    }
+  } catch (e) {
+    // Handle exceptions during capture (e.g., print error message)
+    print('Error capturing image: $e');
+  }
+}
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration:
-            const BoxDecoration(color: Color.fromARGB(255, 245, 245, 245)),
+            const BoxDecoration(color: Color.fromARGB(255, 186, 106, 106)),
         child: Column(
           children: [
             // Mock appbar
@@ -119,6 +148,27 @@ class MainPageState extends State<MainPage> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const ExportPage()));
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                       return AlertDialog(
+                          title: const Text('Share Your Profolio'),
+                          content: const Text('Would you like to share your Profolio?'),
+                         actions: [
+                          TextButton(
+                             onPressed: () => Navigator.pop(context),
+                            child: const Text('Cancel'),
+                          ),
+                          TextButton(
+                             onPressed: () => _capturePng(),
+                              
+
+                           child: const Text('Share'),
+                         ),
+                        ],
+                      );
+                   },
+                  );
                 })
           ],
         ),

@@ -14,6 +14,8 @@ dependencies:
   provider: ^6.1.2
   screenshot: ^2.3.0
   share: ^2.0.4
+  share_plus: ^9.0.0
+  widgets_to_image: ^0.0.3
 
 
 
