@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:profolio/routes/info_pages/classes.dart';
 import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/routes/info_pages/services.dart';
@@ -9,27 +12,28 @@ import 'package:profolio/widgets/section_divider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
 import 'dart:typed_data';
+import 'package:path_provider/path_provider.dart';
 
 
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
-
-
   @override
   State<MainPage> createState() => MainPageState();
 }
 
 class MainPageState extends State<MainPage> {
-
-final screenshotKey = GlobalKey<ScrollableState>(); // Key for capturing ResumePage
+  final screenshotKey = GlobalKey<State>(); // Using GlobalKey<State>
 
   Future<void> _captureAndShareResumePage() async {
     final image = await captureResumePageAsImage();
-    await Share.shareFiles(image);
+    final directory = await getApplicationDocumentsDirectory();
+    final filePath = '${directory.path}/resume_screenshot.jpg';
+    final file = File(filePath);
+    await file.writeAsBytes(image);
+    await Share.shareFiles([filePath]);
   }
-
 
   Future<Uint8List> captureResumePageAsImage() async {
     final boundary = RenderRepaintBoundary(key: screenshotKey);
@@ -39,6 +43,7 @@ final screenshotKey = GlobalKey<ScrollableState>(); // Key for capturing ResumeP
       return byteData!.buffer.asUint8List();
     });
   }
+
 
 
   @override
