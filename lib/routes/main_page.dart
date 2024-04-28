@@ -6,17 +6,45 @@ import 'package:profolio/routes/info_pages/sports.dart';
 import 'package:profolio/widgets/list_widget.dart';
 import 'package:profolio/widgets/resume_layout.dart';
 import 'package:profolio/widgets/section_divider.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:printing/printing.dart';
 
 
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
+
+
   @override
   State<MainPage> createState() => MainPageState();
 }
 
 class MainPageState extends State<MainPage> {
+
+final screenshotKey = GlobalKey<ScrollableState>(); // Key for capturing ResumePage
+
+  Future<void> _captureAndShareResumePage() async {
+    final image = await captureResumePageAsImage();
+    await Share.share('My Resume', data: image);
+  }
+
+  Future<void> _captureAndPrintResumePage() async {
+    final image = await captureResumePageAsImage();
+    await Printing.printImage(image: image, name: 'My Resume');
+  }
+
+  Future<Uint8List> captureResumePageAsImage() async {
+    final boundary = RenderRepaintBoundary(key: screenshotKey);
+    await boundary.addPostFrameCallback((_) async {
+      final image = await boundary.toImage(pixelRatio: 1.0);
+      final byteData = await image.toByteData();
+      return byteData!.buffer.asUint8List();
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,11 +163,26 @@ class MainPageState extends State<MainPage> {
                   padding: const EdgeInsets.all(7),
                   child: const Text('Export'),
                 ),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ResumePage()));
+                onPressed: () async {
+                   await showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                     return AlertDialog(
+                       title: const Text('Export Resume'),
+                        content: const Text('Choose an action:'),
+                       actions: [
+                        TextButton(
+                          onPressed: () => _captureAndPrintResumePage(),
+                         child: const Text('Print'),
+                        ),
+                        TextButton(
+                          onPressed: () => _captureAndShareResumePage(),
+                          child: const Text('Share'),
+                        ),
+                      ],
+                    );
+                  },
+                 );
                 },
               )
             ],
