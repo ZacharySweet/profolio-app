@@ -32,7 +32,15 @@ class ListWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: Row(
                   children: [
-                    const CircleAvatar(child: FlutterLogo(size: 25)),
+                    Container(
+                        decoration: const BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        child: const Padding(
+                          padding: EdgeInsets.all(6),
+                          child: FlutterLogo(size: 25),
+                        )),
                     const SizedBox(width: 10),
                     Expanded(
                       // Wrap Column with Expanded for remaining space
@@ -41,7 +49,9 @@ class ListWidget extends StatelessWidget {
                         children: [
                           Text(title, style: const TextStyle(fontSize: 18)),
                           Text(description,
-                              style: const TextStyle(fontSize: 12)),
+                              style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Color.fromARGB(117, 0, 0, 0))),
                         ],
                       ),
                     ),
