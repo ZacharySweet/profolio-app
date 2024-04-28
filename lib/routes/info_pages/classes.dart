@@ -13,9 +13,7 @@ class ClassPage extends StatefulWidget {
 }
 
 class _ClassPageState extends State<ClassPage> {
-
   void addClass(String classTitle, String classDescription) async {
-
     Provider.of<ClassListProvider>(context, listen: false)
         .addClass(classTitle, classDescription);
   }
@@ -44,64 +42,63 @@ class _ClassPageState extends State<ClassPage> {
                       borderRadius: BorderRadius.all(Radius.circular(12.5)),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),
-                      child: Row(
-                        children: [
-                          const FlutterLogo(size: 60),
-                          const SizedBox(width: 40),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                const Text(
-                                  "Classes are a crucial part of your high school resume. Being a high ranking member of various classes can greatly increase your odds of being accepted into your dream college.",
-                                  overflow: TextOverflow.fade,
-                                  maxLines: null,
-                                  softWrap: true,
-                                  textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: "WorkSans",
-                                    fontSize: 12,
+                        padding: const EdgeInsets.fromLTRB(14, 7, 14, 7),
+                        child: Row(
+                          children: [
+                            const FlutterLogo(size: 60),
+                            const SizedBox(width: 40),
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  const Text(
+                                    "Classes are a crucial part of your high school resume. Being a high ranking member of various classes can greatly increase your odds of being accepted into your dream college.",
+                                    overflow: TextOverflow.fade,
+                                    maxLines: null,
+                                    softWrap: true,
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "WorkSans",
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(height: 4),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: ElevatedButton(
-                                    onPressed: () async {
-                                      // Access ClassListProvider instance
-                                      final classListProvider =
-                                          Provider.of<ClassListProvider>(
-                                              context,
-                                              listen: false);
+                                  const SizedBox(height: 4),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: ElevatedButton(
+                                      onPressed: () async {
+                                        // Access ClassListProvider instance
+                                        final classListProvider =
+                                            Provider.of<ClassListProvider>(
+                                                context,
+                                                listen: false);
 
-                                      // Navigate to AddClass and potentially receive data
-                                      final result = await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const AddClass()),
-                                      );
+                                        // Navigate to AddClass and potentially receive data
+                                        final result = await Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const AddClass()),
+                                        );
 
-                                      // Check if data is returned (optional)
-                                      if (result != null) {
-                                        final classTitle = result[0];
-                                        final classDescription = result[1];
+                                        // Check if data is returned (optional)
+                                        if (result != null) {
+                                          final classTitle = result[0];
+                                          final classDescription = result[1];
 
-                                        // Use the stored provider instance to add the class
-                                        classListProvider.addClass(
-                                            classTitle, classDescription);
-                                      }
-                                    },
-                                    child: const Text("Add Class"),
+                                          // Use the stored provider instance to add the class
+                                          classListProvider.addClass(
+                                              classTitle, classDescription);
+                                        }
+                                      },
+                                      child: const Text("Add Class"),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    ),
+                          ],
+                        )),
                   ),
                 ),
                 // List of classes section
@@ -111,6 +108,7 @@ class _ClassPageState extends State<ClassPage> {
                     children: classListProvider
                         .classes // Access classes list from provider
                         .map((classes) => ListWidget(
+                            icon: const Icon(Icons.menu_book),
                             title: classes.classTitle,
                             description: classes.classDescription))
                         .toList(),

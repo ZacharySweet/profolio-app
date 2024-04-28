@@ -5,7 +5,6 @@ import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/routes/info_pages/services.dart';
 import 'package:profolio/routes/info_pages/sports.dart';
 import 'package:profolio/widgets/list_widget.dart';
-import 'package:profolio/widgets/section_divider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -15,73 +14,53 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
-  final screenshotKey = GlobalKey<State>(); // Using GlobalKey<State>
+  final screenshotKey = GlobalKey<State>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Container(
-          decoration:
-              const BoxDecoration(color: Color.fromARGB(255, 245, 245, 245)),
-          child: Column(
-            children: [
-              // User's basic information and stuff
-              const Column(
+      body: Container(
+        decoration:
+            const BoxDecoration(color: Color.fromARGB(255, 245, 245, 245)),
+        child: Column(
+          children: [
+            // Mock appbar
+            Container(
+              decoration: const BoxDecoration(color: Colors.blue),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(height: 32),
-                  Text("Zachary Sweet", style: TextStyle(fontSize: 34)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Junior at Mena High School",
-                          style: TextStyle(fontSize: 14))
-                    ],
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(12, 48, 0, 12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Zachary Sweet",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 32)),
+                        Text("Junior • Mena High School",
+                            style: TextStyle(color: Colors.white, fontSize: 16))
+                      ],
+                    ),
                   ),
+                  Image(
+                    height: 55,
+                    image: AssetImage("lib/assets/images/App_Icon.png"),
+                  )
                 ],
               ),
-
-              // The user's about me section
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30, 12, 30, 0),
-                child: Column(
-                  children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color.fromARGB(62, 56, 56, 56),
-                            spreadRadius: 0.5,
-                            blurRadius: 4,
-                          ),
-                        ],
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8),
-                        child: Text(
-                          "This is an example about me that i think is really cool and its gonna be wrapped with a box and the text is really awesome and then",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              // The card information section
-              const Padding(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: SectionDivider(dividerText: "Your Information"),
-              ),
-              Column(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
                 children: [
                   GestureDetector(
                     child: const ListWidget(
-                      title: "Academics",
-                      description: "Manage Your Grades And Classes",
-                    ),
+                        title: "Academics",
+                        description: "Manage Your Grades And Classes",
+                        icon: Icon(Icons.book, color: Colors.white)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -91,9 +70,9 @@ class MainPageState extends State<MainPage> {
                   ),
                   GestureDetector(
                     child: const ListWidget(
-                      title: "Clubs",
-                      description: "Manage Your Clubs And Organizations",
-                    ),
+                        title: "Clubs",
+                        description: "Manage Your Clubs And Organizations",
+                        icon: Icon(Icons.groups, color: Colors.white)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -103,9 +82,9 @@ class MainPageState extends State<MainPage> {
                   ),
                   GestureDetector(
                     child: const ListWidget(
-                      title: "Sports",
-                      description: "Manage Your Athletic Participation",
-                    ),
+                        title: "Sports",
+                        description: "Manage Your Athletic Participation",
+                        icon: Icon(Icons.sports_football, color: Colors.white)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -115,9 +94,10 @@ class MainPageState extends State<MainPage> {
                   ),
                   GestureDetector(
                     child: const ListWidget(
-                      title: "Community Service",
-                      description: "Manage Your Community Service Hours",
-                    ),
+                        title: "Community Service",
+                        description: "Manage Your Community Service Hours",
+                        icon:
+                            Icon(Icons.accessibility_new, color: Colors.white)),
                     onTap: () {
                       Navigator.push(
                           context,
@@ -127,20 +107,20 @@ class MainPageState extends State<MainPage> {
                   )
                 ],
               ),
-              const SizedBox(height: 40),
-              ElevatedButton(
-                  child: Container(
-                    padding: const EdgeInsets.all(7),
-                    child: const Text('Export'),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ExportPage()));
-                  })
-            ],
-          ),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+                child: Container(
+                  padding: const EdgeInsets.all(7),
+                  child: const Text('Export'),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ExportPage()));
+                })
+          ],
         ),
       ),
     );

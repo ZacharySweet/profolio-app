@@ -48,6 +48,7 @@ class _ExportPageState extends State<ExportPage> {
                         child: ListView(
                           children: classListProvider.classes
                               .map((classes) => ListWidget(
+                                  icon: const Icon(Icons.menu_book),
                                   title: classes.classTitle,
                                   description: classes.classDescription))
                               .toList(),
@@ -66,6 +67,7 @@ class _ExportPageState extends State<ExportPage> {
                       child: ListView(
                         children: clubListProvider.clubs
                             .map((club) => ListWidget(
+                                icon: const Icon(Icons.menu_book),
                                 title: club.clubTitle,
                                 description: club.clubDescription))
                             .toList(),
@@ -89,6 +91,7 @@ class _ExportPageState extends State<ExportPage> {
                         child: ListView(
                           children: sportListProvider.sports
                               .map((sport) => ListWidget(
+                                  icon: const Icon(Icons.menu_book),
                                   title: sport.sportTitle,
                                   description: sport.sportDescription))
                               .toList(),
@@ -107,6 +110,7 @@ class _ExportPageState extends State<ExportPage> {
                       child: ListView(
                         children: serviceListProvider.services
                             .map((service) => ListWidget(
+                                icon: const Icon(Icons.menu_book),
                                 title: service.serviceTitle,
                                 description: service.serviceDescription))
                             .toList(),

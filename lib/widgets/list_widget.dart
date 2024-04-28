@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 class ListWidget extends StatelessWidget {
   final String title;
   final String description;
+  final Icon icon;
 
-  const ListWidget({Key? key, required this.title, required this.description})
+  const ListWidget(
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.icon})
       : super(key: key);
 
   @override
@@ -37,9 +42,9 @@ class ListWidget extends StatelessWidget {
                             color: Colors.blue,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
-                        child: const Padding(
-                          padding: EdgeInsets.all(6),
-                          child: FlutterLogo(size: 25),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6),
+                          child: icon,
                         )),
                     const SizedBox(width: 10),
                     Expanded(

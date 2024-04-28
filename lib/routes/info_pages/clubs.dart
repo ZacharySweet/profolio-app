@@ -104,6 +104,7 @@ class _ClubPageState extends State<ClubPage> {
                   children:
                       clubListProvider.clubs // Access clubs list from provider
                           .map((club) => ListWidget(
+                                icon: const Icon(Icons.menu_book),
                                 title: club.clubTitle,
                                 description: club.clubDescription,
                               ))

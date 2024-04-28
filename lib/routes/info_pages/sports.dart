@@ -13,9 +13,7 @@ class SportPage extends StatefulWidget {
 }
 
 class _SportPageState extends State<SportPage> {
-
   void addSport(String sportTitle, String sportDescription) async {
-
     Provider.of<SportListProvider>(context, listen: false)
         .addSport(sportTitle, sportDescription);
   }
@@ -82,7 +80,7 @@ class _SportPageState extends State<SportPage> {
                                             builder: (context) =>
                                                 const AddSport()),
                                       );
-      
+
                                       // Check if data is returned
                                       if (result != null) {
                                         final sportTitle = result[0];
@@ -111,6 +109,7 @@ class _SportPageState extends State<SportPage> {
                     children: sportListProvider
                         .sports // Access sports list from provider
                         .map((sport) => ListWidget(
+                            icon: const Icon(Icons.menu_book),
                             title: sport.sportTitle,
                             description: sport.sportDescription))
                         .toList(),
