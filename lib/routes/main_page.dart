@@ -7,14 +7,10 @@ import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/routes/info_pages/services.dart';
 import 'package:profolio/routes/info_pages/sports.dart';
 import 'package:profolio/widgets/list_widget.dart';
-import 'package:profolio/widgets/resume_layout.dart';
 import 'package:profolio/widgets/section_divider.dart';
-import 'package:screenshot/screenshot.dart';
 import 'package:share/share.dart';
 import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
-
-
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -43,8 +39,6 @@ class MainPageState extends State<MainPage> {
       return byteData!.buffer.asUint8List();
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -158,14 +152,13 @@ class MainPageState extends State<MainPage> {
               ),
               const SizedBox(height: 40),
               ElevatedButton(
-                child: Container(
-                  padding: const EdgeInsets.all(7),
-                  child: const Text('Export'),
-                ),
-                onPressed: () async {
-                   await  _captureAndShareResumePage();
-                }
-              )
+                  child: Container(
+                    padding: const EdgeInsets.all(7),
+                    child: const Text('Export'),
+                  ),
+                  onPressed: () async {
+                    await _captureAndShareResumePage();
+                  })
             ],
           ),
         ),
