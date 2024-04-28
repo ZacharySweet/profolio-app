@@ -7,8 +7,8 @@ import 'package:profolio/widgets/list_widget.dart';
 import 'package:profolio/widgets/resume_layout.dart';
 import 'package:profolio/widgets/section_divider.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:printing/printing.dart';
+import 'package:share/share.dart';
+import 'dart:typed_data';
 
 
 
@@ -27,13 +27,9 @@ final screenshotKey = GlobalKey<ScrollableState>(); // Key for capturing ResumeP
 
   Future<void> _captureAndShareResumePage() async {
     final image = await captureResumePageAsImage();
-    await Share.share('My Resume', data: image);
+    await Share.shareFiles(image);
   }
 
-  Future<void> _captureAndPrintResumePage() async {
-    final image = await captureResumePageAsImage();
-    await Printing.printImage(image: image, name: 'My Resume');
-  }
 
   Future<Uint8List> captureResumePageAsImage() async {
     final boundary = RenderRepaintBoundary(key: screenshotKey);
@@ -164,26 +160,8 @@ final screenshotKey = GlobalKey<ScrollableState>(); // Key for capturing ResumeP
                   child: const Text('Export'),
                 ),
                 onPressed: () async {
-                   await showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                     return AlertDialog(
-                       title: const Text('Export Resume'),
-                        content: const Text('Choose an action:'),
-                       actions: [
-                        TextButton(
-                          onPressed: () => _captureAndPrintResumePage(),
-                         child: const Text('Print'),
-                        ),
-                        TextButton(
-                          onPressed: () => _captureAndShareResumePage(),
-                          child: const Text('Share'),
-                        ),
-                      ],
-                    );
-                  },
-                 );
-                },
+                   await  _captureAndShareResumePage();
+                }
               )
             ],
           ),
