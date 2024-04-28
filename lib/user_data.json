@@ -1,10 +1,10 @@
 {
     "basic": {
-        "name": "",
-        "grade": "",
-        "birth_date": ""
+        "name": "Zach Sweet",
+        "grade": "Junior",
+        "school": "Mena High School"
     },
-    "grades": {
+    "classes": {
         
     },
     "clubs": {

@@ -35,7 +35,7 @@ class MainPageState extends State<MainPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Zachary Sweet",
+                        Text("Zach Sweet",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
