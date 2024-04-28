@@ -7,6 +7,8 @@ import 'package:profolio/widgets/list_widget.dart';
 import 'package:profolio/widgets/resume_layout.dart';
 import 'package:profolio/widgets/section_divider.dart';
 
+
+
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
