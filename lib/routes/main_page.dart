@@ -125,9 +125,7 @@ class MainPageState extends State<MainPage> {
                   )
                 ],
               ),
-              const SizedBox(
-                height: 60,
-              ),
+              const SizedBox(height: 40),
               ElevatedButton(
                 child: Container(
                   padding: const EdgeInsets.all(7),
