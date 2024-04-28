@@ -14,7 +14,7 @@ class ExportPage extends StatefulWidget {
 }
 
 class _ExportPageState extends State<ExportPage> {
-  GlobalKey globalKey = GlobalKey();
+  final globalKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     final classListProvider = Provider.of<ClassListProvider>(context);
@@ -24,8 +24,9 @@ class _ExportPageState extends State<ExportPage> {
 
     return RepaintBoundary(
 
-      key: globalKey,
+      
         child: Scaffold(
+          key: globalKey,
           appBar: AppBar(title: const Text(''),),
           body: Column(
             children: [
