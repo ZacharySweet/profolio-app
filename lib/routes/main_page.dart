@@ -81,7 +81,10 @@ class MainPageState extends State<MainPage> {
                       description: "Manage Your Grades And Classes",
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ClassPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ClassPage()));
                     },
                   ),
                   GestureDetector(
@@ -90,7 +93,10 @@ class MainPageState extends State<MainPage> {
                       description: "Manage Your Clubs And Organizations",
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ClubPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ClubPage()));
                     },
                   ),
                   GestureDetector(
@@ -99,7 +105,10 @@ class MainPageState extends State<MainPage> {
                       description: "Manage Your Athletic Participation",
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SportPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SportPage()));
                     },
                   ),
                   GestureDetector(
@@ -108,19 +117,27 @@ class MainPageState extends State<MainPage> {
                       description: "Manage Your Community Service Hours",
                     ),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ServicePage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ServicePage()));
                     },
                   )
                 ],
               ),
-              const SizedBox(height: 60,),
-              GestureDetector(
-                child: Container(padding: const EdgeInsets.all(7),
-                decoration: const BoxDecoration(color: Colors.red),
-                child: const Text('Print/Share'),
+              const SizedBox(
+                height: 60,
+              ),
+              ElevatedButton(
+                child: Container(
+                  padding: const EdgeInsets.all(7),
+                  child: const Text('Export'),
                 ),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ResumePage()));
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ResumePage()));
                 },
               )
             ],
