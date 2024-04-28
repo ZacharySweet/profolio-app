@@ -10,9 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.1.2
-  screenshot: ^1.2.0
-  printing: ^1.2.1
-  share: ^2.0.9
+
 
 dev_dependencies:
   flutter_test:
