@@ -4,6 +4,7 @@ import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/routes/info_pages/services.dart';
 import 'package:profolio/routes/info_pages/sports.dart';
 import 'package:profolio/widgets/list_widget.dart';
+import 'package:profolio/widgets/resume_layout.dart';
 import 'package:profolio/widgets/section_divider.dart';
 
 class MainPage extends StatefulWidget {
@@ -118,7 +119,9 @@ class MainPageState extends State<MainPage> {
                 decoration: const BoxDecoration(color: Colors.red),
                 child: const Text('Print/Share'),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const ResumePage()));
+                },
               )
             ],
           ),
