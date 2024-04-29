@@ -5,20 +5,17 @@ import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/routes/info_pages/services.dart';
 import 'package:profolio/routes/info_pages/sports.dart';
 import 'package:profolio/widgets/list_widget.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:share/share.dart';
 
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  _MainPageState createState() => _MainPageState();
+   createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,11 +115,10 @@ class _MainPageState extends State<MainPage> {
                   child: const Text('Export'),
                 ),
                 onPressed: () {
-                  final GlobalKey globalKey = GlobalKey();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ExportPage(key: globalKey)));
+                          builder: (context) => const ExportPage()));
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -135,9 +131,8 @@ class _MainPageState extends State<MainPage> {
                             child: const Text('Cancel'),
                           ),
                           TextButton(
-                            onPressed: () async {
-                              await Future.delayed(const Duration(milliseconds: 100)); // Wait for widget to build
-                              Share.shareXFiles('lib/assets/template.pdf'); // Call your capture function here
+                            onPressed: () {
+                              Share.shareFiles(['lib/assets/template.pdf']);
                             },
                                  child: const Text('Share'),
                            )

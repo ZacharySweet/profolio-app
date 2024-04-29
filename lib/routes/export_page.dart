@@ -14,7 +14,7 @@ class ExportPage extends StatefulWidget {
 }
 
 class _ExportPageState extends State<ExportPage> {
-  final globalKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     final classListProvider = Provider.of<ClassListProvider>(context);
@@ -22,112 +22,107 @@ class _ExportPageState extends State<ExportPage> {
     final sportListProvider = Provider.of<SportListProvider>(context);
     final serviceListProvider = Provider.of<ServiceListProvider>(context);
 
-    return RepaintBoundary(
-
-      
-        child: Scaffold(
-          key: globalKey,
-          appBar: AppBar(title: const Text(''),),
-          body: Column(
-            children: [
-              const Text(
-                'Zachary Sweet',
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              ),
-              const Text('Junior at Mena High School'),
-              const Text('description'),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1, // Set flex factor to 1 for equal width
-                      child: Column(
-                        children: [
-                          const Text('Academics'),
-                          Expanded(
-                            // Wrap ListView in Expanded for full height
-                            child: ListView(
-                              children: classListProvider.classes
-                                  .map((classes) => ListWidget(
-                                      icon: const Icon(Icons.menu_book),
-                                      title: classes.classTitle,
-                                      description: classes.classDescription))
-                                  .toList(),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 10), // Add spacing between columns
-                    Expanded(
-                      flex: 1, // Set flex factor to 1 for equal width
-                      child: Column(children: [
-                        const Text('Clubs'),
-                        Expanded(
-                          // Wrap ListView in Expanded for full height
-                          child: ListView(
-                            children: clubListProvider.clubs
-                                .map((club) => ListWidget(
-                                    icon: const Icon(Icons.menu_book),
-                                    title: club.clubTitle,
-                                    description: club.clubDescription))
-                                .toList(),
-                          ),
-                        ),
-                      ]),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1, // Set flex factor to 1 for equal width
-                      child: Column(
-                        children: [
-                          const Text('Sports'),
-                          Expanded(
-                            // Wrap ListView in Expanded for full height
-                            child: ListView(
-                              children: sportListProvider.sports
-                                  .map((sport) => ListWidget(
-                                      icon: const Icon(Icons.menu_book),
-                                      title: sport.sportTitle,
-                                      description: sport.sportDescription))
-                                  .toList(),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 10), // Add spacing between columns
-                    Expanded(
-                      flex: 1, // Set flex factor to 1 for equal width
-                      child: Column(children: [
-                        const Text('Community Service'),
-                        Expanded(
-                          // Wrap ListView in Expanded for full height
-                          child: ListView(
-                            children: serviceListProvider.services
-                                .map((service) => ListWidget(
-                                    icon: const Icon(Icons.menu_book),
-                                    title: service.serviceTitle,
-                                    description: service.serviceDescription))
-                                .toList(),
-                          ),
-                        ),
-                      ]),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+    return Scaffold(
+      appBar: AppBar(title: const Text(''),),
+      body: Column(
+        children: [
+          const Text(
+            'Zachary Sweet',
+            style: TextStyle(
+              fontSize: 50,
+            ),
           ),
-        ),
-      );
+          const Text('Junior at Mena High School'),
+          const Text('description'),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1, // Set flex factor to 1 for equal width
+                  child: Column(
+                    children: [
+                      const Text('Academics'),
+                      Expanded(
+                        // Wrap ListView in Expanded for full height
+                        child: ListView(
+                          children: classListProvider.classes
+                              .map((classes) => ListWidget(
+                                  icon: const Icon(Icons.menu_book),
+                                  title: classes.classTitle,
+                                  description: classes.classDescription))
+                              .toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 10), // Add spacing between columns
+                Expanded(
+                  flex: 1, // Set flex factor to 1 for equal width
+                  child: Column(children: [
+                    const Text('Clubs'),
+                    Expanded(
+                      // Wrap ListView in Expanded for full height
+                      child: ListView(
+                        children: clubListProvider.clubs
+                            .map((club) => ListWidget(
+                                icon: const Icon(Icons.menu_book),
+                                title: club.clubTitle,
+                                description: club.clubDescription))
+                            .toList(),
+                      ),
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1, // Set flex factor to 1 for equal width
+                  child: Column(
+                    children: [
+                      const Text('Sports'),
+                      Expanded(
+                        // Wrap ListView in Expanded for full height
+                        child: ListView(
+                          children: sportListProvider.sports
+                              .map((sport) => ListWidget(
+                                  icon: const Icon(Icons.menu_book),
+                                  title: sport.sportTitle,
+                                  description: sport.sportDescription))
+                              .toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 10), // Add spacing between columns
+                Expanded(
+                  flex: 1, // Set flex factor to 1 for equal width
+                  child: Column(children: [
+                    const Text('Community Service'),
+                    Expanded(
+                      // Wrap ListView in Expanded for full height
+                      child: ListView(
+                        children: serviceListProvider.services
+                            .map((service) => ListWidget(
+                                icon: const Icon(Icons.menu_book),
+                                title: service.serviceTitle,
+                                description: service.serviceDescription))
+                            .toList(),
+                      ),
+                    ),
+                  ]),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
     
   }
 }
