@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: Container(
         decoration:
-            const BoxDecoration(color: Color.fromARGB(255, 186, 106, 106)),
+            const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255)),
         child: Column(
           children: [
             // Mock appbar
