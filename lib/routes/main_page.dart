@@ -5,14 +5,12 @@ import 'package:profolio/routes/info_pages/clubs.dart';
 import 'package:profolio/routes/info_pages/services.dart';
 import 'package:profolio/routes/info_pages/sports.dart';
 import 'package:profolio/widgets/list_widget.dart';
-import 'package:share/share.dart';
-
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-   createState() => _MainPageState();
+  createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
@@ -122,24 +120,24 @@ class _MainPageState extends State<MainPage> {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                       return AlertDialog(
-                          title: const Text('Share Your Profolio'),
-                          content: const Text('Would you like to share your Profolio?'),
-                         actions: [
+                      return AlertDialog(
+                        title: const Text('Share Your Profolio'),
+                        content: const Text(
+                            'Would you like to share your Profolio?'),
+                        actions: [
                           TextButton(
-                             onPressed: () => Navigator.pop(context),
+                            onPressed: () => Navigator.pop(context),
                             child: const Text('Cancel'),
                           ),
                           TextButton(
                             onPressed: () {
-                              Share.shareFiles(['lib/assets/template.pdf']);
+                              //        Share.shareFiles(['lib/assets/template.pdf']);
                             },
-                                 child: const Text('Share'),
-                           )
-                           
-                       ],
+                            child: const Text('Share'),
+                          )
+                        ],
                       );
-                   },
+                    },
                   );
                 })
           ],
